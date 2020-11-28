@@ -1,0 +1,21 @@
+{{ $video := newScratch }}
+{{ if .IsNamedParams }}
+    {{ if $.Page.Resources.GetMatch (.Get "src") }}
+        {{ $video.Set "src" ($.Page.Resources.GetMatch (.Get "src")) }}
+    {{ else }}
+        {{ $video.Set "src" ($.Page.Parent.Resources.GetMatch (.Get "src")) }}
+    {{ end }}
+{{ else }}
+    {{ if $.Page.Resources.GetMatch (.Get 0) }}
+        {{ $video.Set "src" ($.Page.Resources.GetMatch (.Get 0)) }}
+    {{ else }}
+        {{ $video.Set "src" ($.Page.Parent.Resources.GetMatch (.Get 0)) }}
+    {{ end }}
+{{ end }}
+
+<video controls>
+    {{ with $video.Get "src" }}
+    <source src="{{ .RelPermalink }}" type="video/{{ .ResourceType }}">
+    {{ end }}
+    Sorry, your browser doesn't support embedded videos.
+</video>

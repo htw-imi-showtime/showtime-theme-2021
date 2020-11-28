@@ -1,0 +1,23 @@
+{{ $current_semester := .ctx.Site.Params.current_semester }}
+{{ $type := slicestr $current_semester 0 2 }}
+{{ $year := slicestr $current_semester 2 }}
+
+{{ if eq .type "long" }}
+    {{ if eq $type "ws" }}
+        winter semester
+    {{ else }}
+        summer semester
+    {{ end }}
+{{ else if eq .type "short" }}
+    {{ if eq $type "ws" }}
+        winter
+    {{ else }}
+        summer
+    {{ end }}
+{{ end }}
+
+{{ if eq (len $year) 2 }}
+    20{{ print $year }}
+{{ else }}
+    {{ print $year }}
+{{ end }}

@@ -1,0 +1,33 @@
+{{ $image := newScratch }}
+{{ if .IsNamedParams }}
+    {{ if $.Page.Resources.GetMatch (.Get "src") }}
+        {{ $image.Set "src" ($.Page.Resources.GetMatch (.Get "src")) }}
+    {{ else }}
+        {{ $image.Set "src" ($.Page.Parent.Resources.GetMatch (.Get "src")) }}
+    {{ end }}
+    {{ $image.Set "alt" (.Get "alt") }}
+    {{ $image.Set "description" (.Get "description") }}
+    {{ $image.Set "width" (.Get "width") }}
+    {{ $image.Set "align" (.Get "align") }}
+{{ else }}
+    {{ if $.Page.Resources.GetMatch (.Get 0) }}
+        {{ $image.Set "src" ($.Page.Resources.GetMatch (.Get 0)) }}
+    {{ else }}
+        {{ $image.Set "src" ($.Page.Parent.Resources.GetMatch (.Get 0)) }}
+    {{ end }}
+    {{ $image.Set "alt" (.Get 1) }}
+    {{ $image.Set "description" (.Get 2) }}
+    {{ $image.Set "width" (.Get 3) }}
+    {{ $image.Set "align" (.Get 4) }}
+{{ end }}
+
+{{ if $image.Get "align" }}
+<figure style="text-align: {{ $image.Get "align" }};">
+{{ else }}
+<figure>
+{{ end }}
+    <img src="{{ ($image.Get "src").RelPermalink }}" alt="{{ $image.Get "alt" }}" {{ if $image.Get "width" }}width="{{ $image.Get "width" }}"{{ end }}>
+    {{ if $image.Get "description" }}
+    <figcaption>{{ $image.Get "description" }}</figcaption>
+    {{ end }}
+</figure>
