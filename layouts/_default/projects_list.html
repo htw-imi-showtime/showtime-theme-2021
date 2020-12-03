@@ -2,7 +2,8 @@
     <header>
         <h1>
             {{ .Title }}
-            <span class="light">{{ partial "semester" (dict "type" "short" "ctx" $) }}</span>
+            {{ partial "semester" (dict "type" "short" "ctx" $) }}
+            <span class="underscore-spacer"> </span>
         </h1>
         <section class="underscore">
             <div class="spacer"></div>

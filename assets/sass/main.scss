@@ -23,7 +23,7 @@ h1 {
     margin: 0;
     line-height: 1;
 
-    .light {
+    .underscore-spacer {
         display: block;
         font-weight: 100;
         text-transform: inherit;
@@ -42,6 +42,10 @@ h3 {
         display: block;
         content: "_";
     }
+
+    &.no-underscore::after {
+        display: none;
+    }
 }
 
 h4 {
@@ -51,6 +55,7 @@ h4 {
 
 a {
     color: $color-link;
+    text-decoration: none;
 
     &:visited {
         color: $color-link-dark;
@@ -74,7 +79,7 @@ nav {
     top: 0;
     z-index: 1;
 
-    > a {
+    & > a {
         font-size: 1.5rem;
     }
 
@@ -92,7 +97,6 @@ nav {
 
     a {
         color: inherit;
-        text-decoration: none;
 
         &:visited {
             color: inherit;
@@ -133,7 +137,6 @@ footer {
 
     a {
         color: inherit;
-        text-decoration: none;
 
         &:visited {
             color: inherit;
@@ -159,10 +162,6 @@ header {
         flex: 5;
         position: relative;
 
-        .light {
-            margin-bottom: 7rem;
-        }
-
         &::after {
             content: "_";
             position: absolute;
@@ -186,7 +185,7 @@ header {
             font-weight: 900;
             color: $color-dark;
             line-height: 1;
-            margin-top: -4.2rem;
+            margin-top: -5.5rem;
             position: absolute;
             right: 0;
         }
@@ -277,7 +276,6 @@ span.type {
 
     a {
         color: $color-accent;
-        text-decoration: none;
         font-size: 5rem;
         position: absolute;
         bottom: 2rem;
@@ -287,10 +285,10 @@ span.type {
 .projects-list-entry {
     display: flex;
     justify-content: space-between;
-    margin: 20rem 0 10rem 0;
+    margin: 15rem 0 7rem 0;
 
     &:first-of-type {
-        margin-top: 13rem;
+        margin-top: 8rem;
     }
 
     p {
@@ -299,7 +297,6 @@ span.type {
 
     a {
         text-transform: uppercase;
-        text-decoration: none;
     }
 
     img {
@@ -334,8 +331,12 @@ span.type {
         margin-bottom: 5rem;
     }
 
-    &>p {
+    & > p {
         margin: 2rem 0 2rem 3/8*100%;
+    }
+
+    a {
+        text-decoration: underline;
     }
 
     section {
@@ -384,5 +385,55 @@ span.type {
             text-align: right;
             text-transform: uppercase;
         }
+    }
+}
+
+.dates > section {
+    display: flex;
+    margin: 3rem 0;
+
+    div:first-of-type {
+        flex: 3
+    }
+
+    div:last-of-type {
+        flex: 5;
+        color: $color-primary;
+
+        h3 {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.contacts > section {
+    display: flex;
+    align-items: flex-end;
+    margin: 3rem 0;
+
+    div:first-of-type {
+        flex: 4;
+        color: $color-primary;
+
+        h3 {
+            margin-bottom: 1rem;
+        }
+    }
+
+    p {
+        flex: 2;
+        font-weight: 900;
+        position: relative;
+
+        &::before {
+            content: "->";
+            position: absolute;
+            left: -2rem;
+        }
+    }
+
+    a {
+        display: block;
+        font-weight: normal;
     }
 }
