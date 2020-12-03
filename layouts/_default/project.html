@@ -1,0 +1,27 @@
+{{ define "main" }}
+    <div class="background">
+        <header>
+            <h1>
+                <span class="type">{{ .Type }}</span>
+                {{ .Title }}
+                <span class="light"><!-- TODO: Split project title --></span>
+            </h1>
+            <section style="text-align: right;">
+                <h4>Team</h4>
+                <ul>
+                    {{ range .Params.team }}
+                        <li>{{ . }}</li>
+                    {{ end }}
+                </ul>
+                <h4>Supervision</h4>
+                {{ .Params.supervisor }}
+            </section>
+        </header>
+    </div>
+    <main class="project">
+        <p class="intro">
+            {{ .Params.card_description }}
+        </p>
+        {{ .Content }}
+    </main>
+{{ end }}

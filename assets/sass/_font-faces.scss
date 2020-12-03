@@ -4,6 +4,12 @@
 }
 
 @font-face {
+    src: url(https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Italic.woff2) format("woff2");
+    font-family: "JetBrains Mono";
+    font-style: italic;
+}
+
+@font-face {
     src: url(https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Light.woff2) format("woff2");
     font-family: "JetBrains Mono";
     font-weight: 100 300;
