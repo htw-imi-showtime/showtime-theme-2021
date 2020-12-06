@@ -1,0 +1,41 @@
+{{ define "main" }}
+    <header>
+        <h1>
+            Archive
+            {{ partial "semester" (dict "type" "short" "semester" .Title) }}
+            <span class="underscore-spacer"> </span>
+        </h1>
+        <section class="underscore">
+            <div class="spacer"></div>
+            <p>Explore the projects of previous semesters:</p>
+            <div class="select-wrapper">
+                <select name="semester" id="semester-select">
+                    {{ range (where .Site.Sections "Title" "!=" .Site.Params.current_semester) }}
+                        <option value="{{ .Title }}" {{ if eq .Title $.Title }}selected{{ end }}>{{ .Params.full_title }}</option>
+                    {{ end }}
+                </select>
+            </div>
+        </section>
+    </header>
+    <main>
+        {{ $semester_pages := where (where (where .Site.Pages "Section" .Title) "Kind" "section") "Type" "!=" .Title }}
+        {{ range sort $semester_pages "Title" }}
+            <section class="projects-list-entry">
+                <div>
+                    <span class="type">{{ .Type }}</span>
+                    <h3>{{ .Title }}</h3>
+                    <p>{{ .Params.card_description }}</p>
+                    <a href="{{ .RelPermalink }}">-> Details</a>
+                </div>
+                {{ $image := newScratch }}
+                {{ if (and .Params.card_image (.Resources.GetMatch .Params.card_image)) }}
+                {{ $image.Set "src" (.Resources.GetMatch .Params.card_image).RelPermalink }}
+                {{ else }}
+                {{ $image.Set "src" (printf "%s/images/placeholder.png" .Site.BaseURL) }}
+                {{ end }}
+                <img src="{{ $image.Get "src" }}" alt="{{ .Title }}">
+            </section>
+            <hr class="alternate">
+        {{ end }}
+    </main>
+{{ end }}

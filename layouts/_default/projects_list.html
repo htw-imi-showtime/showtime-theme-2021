@@ -2,7 +2,7 @@
     <header>
         <h1>
             {{ .Title }}
-            {{ partial "semester" (dict "type" "short" "ctx" $) }}
+            {{ partial "semester" (dict "type" "short" "semester" .Site.Params.current_semester) }}
             <span class="underscore-spacer"> </span>
         </h1>
         <section class="underscore">

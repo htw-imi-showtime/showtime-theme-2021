@@ -68,6 +68,39 @@ ul {
     padding: 0;
 }
 
+.select-wrapper {
+    background-color: $color-dropdown;
+    border-radius: 5px;
+    position: relative;
+
+    &::after {
+        content: "↓";
+        display: inline;
+        position: absolute;
+        right: 1.5rem;
+        top: 0;
+        bottom: 0;
+        font-size: 1.5rem;
+        line-height: 2.5;
+        border-left: 2px solid $color-background;
+        padding-left: 1.3rem;
+        pointer-events: none;
+    }
+
+    select {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        border: none;
+        background: none;
+        font: inherit;
+        text-transform: uppercase;
+        padding: 0.8rem 1.2rem;
+        width: 100%;
+        height: 100%;
+    }
+}
+
 nav {
     color: $color-background;
     background-color: $color-primary;

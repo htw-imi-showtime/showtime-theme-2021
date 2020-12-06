@@ -1,6 +1,6 @@
-{{ $current_semester := .ctx.Site.Params.current_semester }}
-{{ $type := slicestr $current_semester 0 2 }}
-{{ $year := slicestr $current_semester 2 }}
+{{ $semester := .semester }}
+{{ $type := slicestr $semester 0 2 }}
+{{ $year := slicestr $semester 2 }}
 
 {{ if eq .type "long" }}
     {{ if eq $type "ws" }}
