@@ -8,7 +8,7 @@
 }
 
 html {
-    font: 14px/2 "JetBrains Mono";
+    font: 14px/200% "JetBrains Mono";
     color: $color-dark;
     background-color: $color-background;
 }
@@ -23,13 +23,13 @@ h1 {
     color: $color-dark;
     text-transform: uppercase;
     margin: 0;
-    line-height: 1;
+    line-height: 100%;
 
     .underscore-spacer {
         display: block;
-        font-weight: 100;
+        font-weight: 900;
         text-transform: inherit;
-        line-height: 1;
+        line-height: 100%;
     }
 }
 
@@ -64,10 +64,18 @@ a {
     }
 }
 
+strong {
+    font-weight: 900;
+}
+
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.light {
+    font-weight: 100;
 }
 
 .select-wrapper {
@@ -278,42 +286,73 @@ span.type {
 }
 
 .start {
-    background-color: $color-primary;
+    background: $color-primary left repeat fixed url("/img/start-background.svg");
     height: calc(100vh - 66px);
 
     .content {
-        max-width: calc(4 / 6 * 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: calc(4 / 6 * 100%);
+        height: 100%;
         margin: auto;
 
-        h1:last-of-type, h2:last-of-type {
-            color: $color-accent;
-            text-align: right;
+        div {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            div {
+                display: block;
+            }
+
+            div:after {
+                content: "_";
+                font-size: 5.5rem;
+                font-weight: 800;
+            }
         }
 
-        h1:last-of-type {
-            padding-top: 10rem;
+        div:first-child {
+            margin-top: 4rem;
+
+            img {
+                margin-bottom: -18vh;
+                width: 50%;
+            }
+        }
+
+        div:last-child {
+            margin-bottom: 5rem;
+
+            h1 {
+                padding-top: 0;
+                color: $color-accent;
+                text-align: right;
+            }
+        }
+
+        h1 {
+            font-size: 5.5rem;
+        }
+
+        p {
+            margin-top: 4rem;
+            margin-left: 0.4rem;
+            margin-bottom: 0;
         }
     }
 
-    h1 {
-        padding-top: 4rem;
-        margin-bottom: -1rem;
-    }
-
-    h2 {
-        margin-top: -1rem;
-        padding-bottom: 2rem;
-    }
-
-    p {
-        margin: 0.2rem;
-    }
-
-    a {
-        color: $color-accent;
-        font-size: 5rem;
+    .deco-01 {
         position: absolute;
-        bottom: 2rem;
+        left: calc(1 / 12 * 100%);
+        top: 25vh;
+    }
+
+    .deco-02 {
+        position: absolute;
+        right: calc(1 / 12 * 100%);
+        top: 75vh;
     }
 }
 
