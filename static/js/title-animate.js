@@ -10,16 +10,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function showFullTitle() {
     setTimeout(() => {
-        title.innerText = "IMI⨯SHTI";
+        title.innerText = "IMI×SHTI";
     }, 50);
     setTimeout(() => {
-        title.innerText = "IMI⨯SHOTIM";
+        title.innerText = "IMI×SHOTIM";
     }, 100);
     setTimeout(() => {
-        title.innerText = "IMI⨯SHOWTIME";
+        title.innerText = "IMI×SHOWTIME";
     }, 150);
     setTimeout(() => {
-        title.innerText = "IMI⨯SHOWTIME_";
+        title.innerText = "IMI×SHOWTIME_";
         hovered = true;
         blink(true);
     }, 200);
@@ -28,13 +28,13 @@ function showFullTitle() {
 function hideFullTitle() {
     hovered = false;
     setTimeout(() => {
-        title.innerText = "IMI⨯SHOTIM";
+        title.innerText = "IMI×SHOTIM";
     }, 50);
     setTimeout(() => {
-        title.innerText = "IMI⨯SHTI";
+        title.innerText = "IMI×SHTI";
     }, 100);
     setTimeout(() => {
-        title.innerText = "IMI⨯ST";
+        title.innerText = "IMI×ST";
     }, 150);
 }
 
