@@ -1,0 +1,25 @@
+{{ define "main" }}
+<header>
+    <h1>
+        {{ .Title }} <br>
+        <span class="underscore-spacer">_</span>
+    </h1>
+    <section class="underscore">
+        <div class="spacer"></div>
+        {{ .Content }}
+    </section>
+</header>
+<main class="schedule">
+    <section>
+        <hr>
+        <ul>
+            {{ range .Site.Data.schedule.slot }}
+            <li class="{{ .class }}">
+                <h4>{{ .title }}</h4>
+                <a href="{{ .projectDetail }}">-> Project_Details</a>
+                {{ end }}
+            </li>
+        </ul>
+    </section>
+</main>
+{{ end }}

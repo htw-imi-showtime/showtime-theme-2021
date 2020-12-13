@@ -1,8 +1,6 @@
 @import 'font-faces';
 @import 'colors';
 
-// ldfihgsdlfgh
-
 * {
     box-sizing: border-box;
 }
@@ -18,7 +16,7 @@ body {
 }
 
 h1 {
-    font-size: 7rem;
+    font-size: 6rem;
     font-weight: 900;
     color: $color-dark;
     text-transform: uppercase;
@@ -317,7 +315,7 @@ span.type {
             margin-top: 4rem;
 
             img {
-                margin-bottom: -18vh;
+                margin-bottom: -10vh;
                 width: 50%;
             }
         }
@@ -458,6 +456,54 @@ span.type {
             color: $color-primary;
             text-align: right;
             text-transform: uppercase;
+        }
+    }
+}
+
+.schedule > section {
+    ul {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        li {
+            width: calc(1/4 * (100% - 3rem));
+            box-sizing: border-box;
+            min-height: 11rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: $color-primary;
+
+            a {
+                color: $color-background;
+                text-transform: uppercase;
+            }
+        }
+
+        .general {
+            border-top: $color-primary 2px solid;
+            width: 100%;
+            background-color: transparentize($color-dark, 0.9);
+            a {
+                display: none;
+            }
+        }
+
+        .empty {
+            a {
+                display: none;
+            }
+        }
+
+        .bachelor {
+            border-top: $color-dark 2px solid;
+            background-color: $color-primary;
+            color: $color-dark;
+        }
+
+        .master {
+            border-top: $color-primary 2px solid;
+            background-color: $color-dark;
         }
     }
 }
