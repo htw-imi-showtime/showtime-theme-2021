@@ -112,7 +112,7 @@ ul {
 nav {
     color: $color-background;
     background-color: $color-primary;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -148,7 +148,7 @@ nav {
 footer {
     background-color: $color-primary;
     color: $color-background;
-    padding: 2rem;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     margin-top: 15rem;
@@ -192,12 +192,17 @@ footer {
 }
 
 main, header {
-    margin: 0 1/6*100%;
+    margin-left: 1/6*100%;
+    margin-right: 1/6*100%;
+}
+
+main {
+    margin-top: 12rem;
 }
 
 header {
+    margin-top: 6rem;
     display: flex;
-    padding: 7rem 0 7rem 0;
 
     h1 {
         flex: 5;
@@ -219,6 +224,7 @@ header {
         position: relative;
         display: flex;
         flex-direction: column;
+        vertical-align: bottom;
 
         &.underscore::before {
             content: "_";
@@ -461,44 +467,71 @@ span.type {
 }
 
 .schedule > section {
+    div {
+        display: flex;
+        justify-content: space-between;
+
+        h2 {
+            width: calc(1/4 * (100% - 4.5rem));
+            font-size: 1rem;
+            line-height: 100%;
+        }
+    }
     ul {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
 
         li {
-            width: calc(1/4 * (100% - 3rem));
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            width: calc(1/4 * (100% - 4.5rem));
             box-sizing: border-box;
             min-height: 11rem;
             padding: 1rem;
-            margin-top: 1rem;
-            color: $color-primary;
+
+            h3 {
+                margin: 0 0 1rem 0;
+                font-size: 1.6rem;
+            }
 
             a {
                 color: $color-background;
                 text-transform: uppercase;
+                line-height: 100%;
             }
+
+            a:hover {
+                color: $color-accent;
+            }
+        }
+
+        .time {
+            min-height: auto;
+            width: 100%;
+            padding: 0;
+            margin-top: 1rem;
+            line-height: 100%;
         }
 
         .general {
             border-top: $color-primary 2px solid;
             width: 100%;
-            background-color: transparentize($color-dark, 0.9);
-            a {
-                display: none;
-            }
+            background-color: transparentize($color-primary, 0.9);
         }
 
         .empty {
-            a {
-                display: none;
-            }
+            background: center no-repeat url("/img/diagonal.svg");
         }
 
         .bachelor {
             border-top: $color-dark 2px solid;
             background-color: $color-primary;
-            color: $color-dark;
+
+            h3 {
+                color: $color-dark;
+            }
         }
 
         .master {
