@@ -1,0 +1,38 @@
+{{ define "main" }}
+<header>
+    <h1>
+        {{ .Title }} <br>
+        <span class="underscore-spacer">_</span>
+    </h1>
+    <section class="underscore">
+        <div class="spacer"></div>
+        {{ .Content }}
+    </section>
+</header>
+<main class="schedule">
+    <section>
+        <div>
+            <h2>Bachelor Presentation</h2>
+            <h2>Master Presentation</h2>
+            <h2>Bachelor Q&A</h2>
+            <h2>Master Q&A</h2>
+        </div>
+        <hr>
+        <ul>
+            {{ range .Site.Data.schedule.slot }}
+            <li class="{{ .class }}">
+                {{ if eq .class "time" }}
+                <p>{{ .time }}</p>
+                {{ else if eq .class "empty" }}
+                {{ else }}
+                <h3 class="no-underscore">{{ .title }}</h3>
+                {{ if isset . "projectDetail"}}
+                <a href="{{ .projectDetail }}">-> Project_Details</a>
+                {{ end }}
+                {{ end }}
+                {{ end }}
+            </li>
+        </ul>
+    </section>
+</main>
+{{ end }}
