@@ -289,6 +289,65 @@ span.type {
     background-color: $color-dark;
 }
 
+.teaser {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 12rem;
+
+    h3 {
+        width: 37.5%;
+        font-size: 4rem;
+    }
+
+    hr {
+        margin-top: 4rem;
+        width: 100%;
+    }
+
+    p {
+        width: 50%;
+    }
+
+    a {
+        text-transform: uppercase;
+    }
+
+
+}
+
+.teaser:nth-child(even) {
+
+    h4 {
+        text-align: right;
+    }
+
+    p {
+        order: 1;
+    }
+
+    h3 {
+        order: 2;
+        text-align: right;
+    }
+
+    hr {
+        order: 3;
+
+        &::after {
+            left: 0;
+        }
+    }
+}
+
+.category {
+    text-transform: uppercase;
+    color: $color-primary;
+    font-weight: 100;
+    width: 100%;
+}
+
 .start {
     background: $color-primary left repeat fixed url("/img/start-background.svg");
     height: calc(100vh - 66px);
