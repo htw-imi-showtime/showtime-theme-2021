@@ -9,6 +9,7 @@ html {
     font: 14px/200% "JetBrains Mono";
     color: $color-dark;
     background-color: $color-background;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -218,7 +219,7 @@ main, header {
 }
 
 main {
-    margin-top: 12rem;
+    padding-top: 12rem;
 }
 
 header {
