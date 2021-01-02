@@ -2,7 +2,7 @@
     <header>
         <h1>
             {{ .Title }}
-            <span class="underscore-spacer">_</span>
+            <span class="underscore-spacer"> </span>
         </h1>
         <section class="underscore">
             <div class="spacer"></div>
@@ -12,16 +12,14 @@
     <main class="contacts">
         {{ range .Site.Data.contacts.contacts }}
             <section>
-                <div>
-                    <h3 class="no-underscore">{{ .title }}</h3>
+                <h3 class="no-underscore">{{ .title }}</h3>
+                <p>
                     {{ .description }}
-                </div>
-                <div class="spacer"></div>
+                </p>
                 <p>
                     {{ .contact }}
                     <a href="mailto:{{ .email }}">{{ .email }}</a>
                 </p>
-                <div class="spacer"></div>
             </section>
             <hr>
         {{ end }}

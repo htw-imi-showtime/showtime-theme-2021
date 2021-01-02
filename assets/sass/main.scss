@@ -74,7 +74,7 @@ ul {
 }
 
 button {
-    margin-top: 2rem;
+    margin-top: 3rem;
     background-color: $color-dropdown;
     border: none;
     height: 3rem;
@@ -234,6 +234,7 @@ header {
             content: "_";
             position: absolute;
             bottom: 0;
+            left: 0;
         }
     }
 
@@ -250,13 +251,18 @@ header {
 
         &.underscore::before {
             content: "_";
-            font-size: 7rem;
+            font-size: 6rem;
             font-weight: 900;
             color: $color-dark;
             line-height: 1;
             margin-top: -5.5rem;
             position: absolute;
             right: 0;
+        }
+
+        p {
+          margin-top: 8rem;
+          margin-bottom: 0;
         }
     }
 }
@@ -655,39 +661,49 @@ span.type {
 }
 
 .dates > section {
-    display: flex;
-    margin: 3rem 0;
+        display: flex;
+        margin: 3rem 0;
 
-    div:first-of-type {
-        flex: 3
-    }
-
-    div:last-of-type {
-        flex: 5;
-        color: $color-primary;
-
-        h3 {
-            margin-bottom: 1rem;
+        div:first-of-type {
+            flex: 3
         }
-    }
+
+        div:last-of-type {
+            flex: 5;
+            color: $color-primary;
+
+            h3 {
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
+        }
 }
+
+
 
 .contacts > section {
     display: flex;
-    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin: 3rem 0;
 
-    div:first-of-type {
-        flex: 4;
-        color: $color-primary;
-
-        h3 {
-            margin-bottom: 1rem;
-        }
+    h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        width: 100%;
     }
 
     p {
-        flex: 2;
+        margin: 0;
+    }
+
+    p:first-of-type {
+        color: $color-primary;
+        width: 4/8 * 100%;
+    }
+
+    p:last-of-type {
+        width: 3/8 * 100%;
         font-weight: 900;
         position: relative;
 
