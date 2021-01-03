@@ -999,4 +999,26 @@ span.type {
             margin-left: 2rem;
         }
     }
+
+
+    .projects-list-entry {
+        display: block;
+        margin-top: 4rem;
+        margin-bottom: 5rem;
+
+        &:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            margin-top: 2rem;
+        }
+
+        img {
+            margin-top: 2rem;
+            margin-left: 0;
+            width: 100%;
+        }
+
+    }
 }
