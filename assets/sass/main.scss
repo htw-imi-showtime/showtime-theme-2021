@@ -328,11 +328,13 @@ span.type {
         width: 100%;
     }
 
-    p {
+    div {
         width: 50%;
     }
 
     a {
+        display: block;
+        margin-top: 2rem;
         text-transform: uppercase;
     }
 
@@ -345,7 +347,7 @@ span.type {
         text-align: right;
     }
 
-    p {
+    div {
         order: 1;
     }
 
@@ -434,7 +436,7 @@ span.type {
             margin-top: 4rem;
 
             img {
-                margin-bottom: -10vh;
+                margin-bottom: -5vh;
                 width: 50%;
             }
         }
