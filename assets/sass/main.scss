@@ -560,6 +560,10 @@ span.type {
 }
 
 .project {
+    > *:first-child {
+        margin-top: 0;
+    }
+
     .project-link {
         display: inline-flex;
         align-items: center;
