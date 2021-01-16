@@ -73,12 +73,16 @@ ul {
     padding: 0;
 }
 
+img {
+    max-width: 100%;
+}
+
 button {
     margin-top: 2rem;
     background-color: $color-dropdown;
     border: none;
     height: 3rem;
-    font-family: "JetBrains Mono";
+    font-family: inherit;
     font-size: 1.2rem;
     text-transform: uppercase;
     border-radius: 1.5rem;
@@ -226,6 +230,11 @@ header {
     margin-top: 6rem;
     display: flex;
 
+    &.project-header {
+        margin-top: 0;
+        padding: 6rem 0;
+    }
+
     h1 {
         flex: 5;
         position: relative;
@@ -301,6 +310,19 @@ span.type {
 
 .background {
     background-color: $color-primary;
+
+    &.master {
+        background-color: $color-dark;
+        color: $color-primary;
+
+        h1 {
+            color: inherit;
+        }
+
+        a {
+            color: $color-background;
+        }
+    }
 
     .type {
         color: inherit;
@@ -510,8 +532,53 @@ span.type {
     }
 }
 
+.project-menu {
+    position: sticky;
+    z-index: 1;
+    top: 5rem;
+
+    ul {
+        margin: 0 1/6*100%;
+        display: flex;
+    }
+
+    li {
+        padding: 0.5rem 1.2rem;
+
+        a {
+            color: $color-background;
+        }
+
+        &.active {
+            background: $color-background;
+
+            a {
+                color: $color-dark;
+            }
+        }
+    }
+}
+
 .project {
-    margin-top: 12rem;
+    > *:first-child {
+        margin-top: 0;
+    }
+
+    .project-link {
+        display: inline-flex;
+        align-items: center;
+        text-transform: uppercase;
+        text-decoration: none;
+        margin: 0 4rem 3rem 0;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+
+        img {
+            margin-right: 1rem;
+        }
+    }
 
     .intro, blockquote {
         font-size: 2.571428rem;
@@ -530,6 +597,12 @@ span.type {
 
     a {
         text-decoration: underline;
+    }
+
+    ul {
+        list-style: disc;
+        margin: 1em 0;
+        padding-inline-start: 3em;
     }
 
     section {
@@ -566,6 +639,11 @@ span.type {
 
     figure {
         margin: 8rem 0;
+
+        img {
+            display: block;
+            margin: 0 auto;
+        }
 
         blockquote {
             font-style: italic;

@@ -1,15 +1,11 @@
 {{ $video := newScratch }}
 {{ if .IsNamedParams }}
     {{ $video.Set "id" (.Get "id") }}
-    {{ $video.Set "width" (.Get "width") }}
-    {{ $video.Set "height" (.Get "height") }}
 {{ else }}
     {{ $video.Set "id" (.Get 0) }}
-    {{ $video.Set "width" (.Get 1) }}
-    {{ $video.Set "height" (.Get 2) }}
 {{ end }}
 
 <div class="mediathek-embed">
     <img src="/img/16x9.png" alt="video placeholder">
-    <iframe src="https://mediathek.htw-berlin.de/media/embed?key={{ $video.Get "id" }}&responsive=true&autoplay=false&t=0" width="{{ $video.Get "width" }}" height="{{ $video.Get "height" }}" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no"></iframe>
+    <iframe src="https://mediathek.htw-berlin.de/media/embed?key={{ $video.Get "id" }}&responsive=true&autoplay=false&t=0" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no"></iframe>
 </div>

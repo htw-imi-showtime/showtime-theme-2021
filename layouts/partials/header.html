@@ -1,4 +1,4 @@
-<nav>
+<nav class="background {{ .Type | lower }}">
     <a href="{{ .Site.BaseURL }}"><strong>IMI<span class="light">×</span>ST</strong> <span class="light">{{ partial "semester" (dict "semester" .Site.Params.current_semester)}}</span></a>
     <ul>
         <li><a href="/projects">Projects</a></li>
