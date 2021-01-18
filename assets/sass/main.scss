@@ -519,10 +519,10 @@ span.type {
         height: auto;
         align-self: center;
         margin-left: 1/8*100%;
-        filter: drop-shadow(10px 10px 0 $color-dark);
+        box-shadow: 10px 10px $color-dark;
     }
 
-    &:nth-child(4n) {
+    &:nth-of-type(even) {
         flex-direction: row-reverse;
 
         img {
