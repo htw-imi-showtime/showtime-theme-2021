@@ -257,6 +257,10 @@ header {
         flex-direction: column;
         vertical-align: bottom;
 
+        p {
+            padding-top: 1rem;
+        }
+
         &.underscore::before {
             content: "_";
             font-size: 7rem;
@@ -302,6 +306,10 @@ span.type {
     &::after {
         content: " PROJECT";
     }
+}
+
+.block {
+    display: block;
 }
 
 .spacer {
