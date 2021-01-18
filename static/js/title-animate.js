@@ -1,50 +1,70 @@
-let title;
-let hovered = false;
+const titleStates = new Map();
 
 window.addEventListener("DOMContentLoaded", () => {
-    title = document.querySelector("nav > a > strong");
-    afterTitle = title.querySelector("::after");
-    title.addEventListener("mouseenter", showFullTitle);
-    title.addEventListener("mouseleave", hideFullTitle);
+    const titles = document.querySelectorAll(".animate-trigger");
+    titles.forEach(title => {
+        const animatingTitle = title.querySelector(".animate");
+        titleStates.set(animatingTitle, { show: false, shown: false });
+        title.addEventListener("mouseenter", () => showFullTitle(animatingTitle));
+        title.addEventListener("mouseleave", () => hideFullTitle(animatingTitle));
+    });
 });
 
-function showFullTitle() {
-    setTimeout(() => {
-        title.innerText = "IMI×SHTI";
-    }, 50);
-    setTimeout(() => {
-        title.innerText = "IMI×SHOTIM";
-    }, 100);
-    setTimeout(() => {
-        title.innerText = "IMI×SHOWTIME";
-    }, 150);
-    setTimeout(() => {
-        title.innerText = "IMI×SHOWTIME_";
-        hovered = true;
-        blink(true);
-    }, 200);
+async function showFullTitle(title) {
+    const titleState = titleStates.get(title);
+    if (titleState.show) return;
+
+    titleState.show = true;
+    titleStates.set(title, titleState);
+
+    title.innerText = "SHTI";
+    await wait(20);
+    title.innerText = "SHOTIM";
+    await wait(20);
+    title.innerText = "SHOWTIME";
+    await wait(20);
+    title.innerText = "SHOWTIME_";
+
+    titleState.shown = true;
+    titleStates.set(title, titleState);
+    await blink(true, title);
 }
 
-function hideFullTitle() {
-    hovered = false;
-    setTimeout(() => {
-        title.innerText = "IMI×SHOTIM";
-    }, 50);
-    setTimeout(() => {
-        title.innerText = "IMI×SHTI";
-    }, 100);
-    setTimeout(() => {
-        title.innerText = "IMI×ST";
-    }, 150);
+async function hideFullTitle(title) {
+    const titleState = titleStates.get(title);
+    if (!titleState.show) return;
+
+    if (!titleState.shown) {
+        titleState.shown = false;
+        titleStates.set(title, titleState);
+        await wait(200);
+    }
+    titleState.shown = false;
+    titleStates.set(title, titleState);
+
+    title.innerText = "SHOTIM";
+    await wait(20);
+    title.innerText = "SHTI";
+    await wait(20);
+    title.innerText = "ST";
+
+    titleState.show = false;
+    titleStates.set(title, titleState);
 }
 
-function blink(shown) {
-    setTimeout(() => {
-        if (hovered === false) return;
-        if (shown)
-            title.innerText = title.innerText.replace("_", " ");
-        else
-            title.innerText = title.innerText.replace(" ", "_");
-        blink(!shown);
-    }, 400);
+async function blink(shown, title) {
+    if (!titleStates.get(title).shown) return;
+    console.log(titleStates.get(title));
+
+    if (shown)
+        title.innerText = title.innerText.replace("_", " ");
+    else
+        title.innerText = title.innerText.replace(" ", "_");
+
+    await wait(400);
+    await blink(!shown, title);
+}
+
+async function wait(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
