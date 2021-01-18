@@ -1,11 +1,12 @@
 const titleStates = new Map();
 
 window.addEventListener("DOMContentLoaded", () => {
-    const titles = document.querySelectorAll(".animate");
+    const titles = document.querySelectorAll(".animate-trigger");
     titles.forEach(title => {
-        titleStates.set(title, { show: false, shown: false });
-        title.addEventListener("mouseenter", () => showFullTitle(title));
-        title.addEventListener("mouseleave", () => hideFullTitle(title));
+        const animatingTitle = title.querySelector(".animate");
+        titleStates.set(animatingTitle, { show: false, shown: false });
+        title.addEventListener("mouseenter", () => showFullTitle(animatingTitle));
+        title.addEventListener("mouseleave", () => hideFullTitle(animatingTitle));
     });
 });
 
@@ -17,11 +18,11 @@ async function showFullTitle(title) {
     titleStates.set(title, titleState);
 
     title.innerText = "SHTI";
-    await wait(50);
+    await wait(20);
     title.innerText = "SHOTIM";
-    await wait(50);
+    await wait(20);
     title.innerText = "SHOWTIME";
-    await wait(50);
+    await wait(20);
     title.innerText = "SHOWTIME_";
 
     titleState.shown = true;
@@ -42,9 +43,9 @@ async function hideFullTitle(title) {
     titleStates.set(title, titleState);
 
     title.innerText = "SHOTIM";
-    await wait(50);
+    await wait(20);
     title.innerText = "SHTI";
-    await wait(50);
+    await wait(20);
     title.innerText = "ST";
 
     titleState.show = false;
