@@ -51,6 +51,8 @@
                 {{ .CurrentSection.Params.card_description }}
             </p>
         {{ end }}
-        {{ .Content }}
+        <section id="project-content">
+            {{ .Content }}
+        </section>
     </main>
 {{ end }}
