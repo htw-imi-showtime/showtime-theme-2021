@@ -587,9 +587,9 @@ span.type {
     }
 
     .intro, blockquote {
-        font-size: 2.571428rem;
-        line-height: 1.666;
+        font-size: 2rem;
         color: $color-primary;
+        line-height: 1.666;
     }
 
     .intro {
@@ -612,23 +612,34 @@ span.type {
     }
 
     section {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(8,1fr);
+        grid-auto-rows: auto;
+        grid-gap: 2rem;
         margin: 2rem 0;
-        justify-content: flex-end;
 
         h3 {
-            width: 3/8 * 100%;
+            grid-column: 1 / 4;
         }
 
         p {
-            width: 5/8 * 100%;
+            grid-column: 4 / 9;
+        }
+
+        blockquote {
+            grid-column: 3 / 8;
+            font-style: italic;
+            color: $color-primary;
+        }
+
+        .mediathek-embed {
+            grid-column : 1 / 9;
+            margin: 8rem 0;
+            position: relative;
         }
     }
 
     .mediathek-embed {
-        margin: 8rem 0;
-        position: relative;
 
         img {
             display: block;
