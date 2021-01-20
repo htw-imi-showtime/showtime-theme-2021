@@ -605,12 +605,6 @@ span.type {
         text-decoration: underline;
     }
 
-    ul {
-        list-style: disc;
-        margin: 1em 0;
-        padding-inline-start: 3em;
-    }
-
     section {
         display: grid;
         grid-template-columns: repeat(8,1fr);
@@ -618,62 +612,64 @@ span.type {
         grid-gap: 2rem;
         margin: 2rem 0;
 
-        h3 {
+        h1, h2, h3 {
             grid-column: 1 / 4;
+            padding-right: 2rem;
+            margin: 0;
         }
 
         p {
             grid-column: 4 / 9;
+            margin: 0;
         }
 
         blockquote {
-            grid-column: 3 / 8;
+            grid-column: 3 / 9;
             font-style: italic;
             color: $color-primary;
         }
 
-        .mediathek-embed {
+        ul {
+            grid-column: 4 / 9;
+            list-style: none;
+
+            li {
+                margin-left: 2rem;
+                margin-top: .5rem;
+            }
+
+            li::before {
+                content: "-> ";
+                margin-left: -2rem;
+            }
+        }
+
+        .mediathek-embed, figure {
             grid-column : 1 / 9;
-            margin: 8rem 0;
+            margin: 5rem 0;
             position: relative;
-        }
-    }
 
-    .mediathek-embed {
+            img {
+                display: block;
+                margin: 0 auto;
+                width: 100%;
+            }
 
-        img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
 
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    figure {
-        margin: 8rem 0;
-
-        img {
-            display: block;
-            margin: 0 auto;
-        }
-
-        blockquote {
-            font-style: italic;
-            margin: 0 1/8*100% 0 2/8*100%;
-        }
-
-        figcaption {
-            font-size: 1.15rem;
-            color: $color-primary;
-            text-align: right;
-            text-transform: uppercase;
+            figcaption {
+                margin-top: 1rem;
+                font-size: 1rem;
+                color: $color-primary;
+                text-align: right;
+                text-transform: uppercase;
+            }
         }
     }
 }
