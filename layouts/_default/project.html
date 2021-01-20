@@ -1,27 +1,56 @@
 {{ define "main" }}
-    <div class="background">
-        <header>
+    <div class="background {{ .Type | lower }}">
+        <header class="project-header">
             <h1>
                 <span class="type">{{ .Type }}</span>
-                {{ .Title }}
+                {{ .CurrentSection.Title }}
                 <span class="underscore-spacer"> </span>
             </h1>
             <section style="text-align: right;">
+                <div class="spacer"></div>
                 <h4>Team</h4>
                 <ul>
-                    {{ range .Params.team }}
+                    {{ range .CurrentSection.Params.team }}
                         <li>{{ . }}</li>
                     {{ end }}
                 </ul>
                 <h4>Supervision</h4>
-                {{ .Params.supervisor }}
+                {{ .CurrentSection.Params.supervisor }}
             </section>
         </header>
     </div>
+    <div class="project-menu background {{ .Type | lower }}">
+        <ul>
+            <li {{if .IsNode }}class="active"{{ end }}><a href="{{ .CurrentSection.RelPermalink }}">Overview</a></li>
+            {{ range .CurrentSection.Pages }}
+            <li {{if eq . $ }}class="active"{{ end }}><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
     <main class="project">
-        <p class="intro">
-            {{ .Params.card_description }}
-        </p>
+        {{ if .IsNode }}
+            {{ with .CurrentSection.Params.demo_link }}
+            <a class="project-link" href="{{ . }}">
+                <img src="/img/demo.svg" alt="Demo Link Icon">
+                Demo
+            </a>
+            {{ end }}
+            {{ with .CurrentSection.Params.source_link }}
+            <a class="project-link" href="{{ . }}">
+                <img src="/img/code.svg" alt="Demo Link Icon">
+                Source_Code
+            </a>
+            {{ end }}
+            {{ with .CurrentSection.Params.website_link }}
+            <a class="project-link" href="{{ . }}">
+                <img src="/img/website.svg" alt="Demo Link Icon">
+                Website
+            </a>
+            {{ end }}
+            <p class="intro">
+                {{ .CurrentSection.Params.card_description }}
+            </p>
+        {{ end }}
         {{ .Content }}
     </main>
 {{ end }}
