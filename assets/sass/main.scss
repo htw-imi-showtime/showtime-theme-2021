@@ -301,6 +301,7 @@ span.type {
     color: $color-primary;
     font-weight: 100;
     font-size: 1rem;
+    line-height: 100%;
     display: block;
 
     &::after {
@@ -598,7 +599,7 @@ span.type {
 
     .intro {
         margin-left: 0;
-        margin-bottom: 5rem;
+        margin-bottom: 6rem;
     }
 
     & > p {
@@ -615,9 +616,12 @@ span.type {
         padding-inline-start: 3em;
     }
 
+    section, figure, .mediathek-embed {
+        margin: 6rem 0;
+    }
+
     section {
         display: flex;
-        margin: 4rem 0;
 
         h3 {
             flex: 2;
@@ -637,7 +641,6 @@ span.type {
     }
 
     .mediathek-embed {
-        margin: 8rem 0;
 
         .mediathek-player {
             position: relative;
@@ -659,10 +662,9 @@ span.type {
     }
 
     figure {
-        margin: 8rem 0;
 
         figcaption {
-            font-size: 1.15rem;
+            margin-top: 1rem;
             color: $color-primary;
             text-align: right;
             text-transform: uppercase;
