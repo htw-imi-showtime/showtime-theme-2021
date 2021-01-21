@@ -37,7 +37,7 @@ h3 {
     font-weight: 900;
     font-size: 2.5rem;
     line-height: 1.25;
-    margin-top: 0.7rem;
+    margin-top: 0;
 
     &::after {
         display: block;
@@ -257,6 +257,10 @@ header {
         flex-direction: column;
         vertical-align: bottom;
 
+        p {
+            padding-top: 1rem;
+        }
+
         &.underscore::before {
             content: "_";
             font-size: 7rem;
@@ -304,8 +308,16 @@ span.type {
     }
 }
 
+.block {
+    display: block;
+}
+
 .spacer {
     flex: 1;
+}
+
+.gist {
+    margin-left: 37.5%;
 }
 
 .background {
@@ -517,10 +529,10 @@ span.type {
         height: auto;
         align-self: center;
         margin-left: 1/8*100%;
-        filter: drop-shadow(10px 10px 0 $color-dark);
+        box-shadow: 10px 10px $color-dark;
     }
 
-    &:nth-child(4n) {
+    &:nth-of-type(even) {
         flex-direction: row-reverse;
 
         img {
@@ -579,7 +591,7 @@ span.type {
     }
 
     .intro, blockquote {
-        font-size: 2.571428rem;
+        font-size: 2rem;
         line-height: 1.666;
         color: $color-primary;
     }
@@ -605,7 +617,7 @@ span.type {
 
     section {
         display: flex;
-        margin: 2rem 0;
+        margin: 4rem 0;
 
         h3 {
             flex: 2;
@@ -613,46 +625,62 @@ span.type {
 
         .content {
             flex: 5;
+
+            p:first-of-type {
+                margin-top: 0;
+            }
+
+            p:last-of-type {
+                margin-bottom: 0;
+            }
         }
     }
 
     .mediathek-embed {
         margin: 8rem 0;
-        position: relative;
 
-        img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
+        .mediathek-player {
+            position: relative;
 
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 
     figure {
         margin: 8rem 0;
 
-        img {
-            display: block;
-            margin: 0 auto;
-        }
-
-        blockquote {
-            font-style: italic;
-            margin: 0 1/8*100% 0 2/8*100%;
-        }
-
         figcaption {
             font-size: 1.15rem;
             color: $color-primary;
             text-align: right;
             text-transform: uppercase;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+
+            & + figcaption {
+                margin-left: 3/8*100%;
+                text-align: left;
+            }
+        }
+
+        blockquote {
+            font-style: italic;
+            margin: 0 1/8*100% 0 2/8*100%;
         }
     }
 }

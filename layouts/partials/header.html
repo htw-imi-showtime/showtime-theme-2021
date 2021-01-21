@@ -6,11 +6,11 @@
         <li><a href="/dates">Dates</a></li>
         {{ $previous_semester_type := "" }}
         {{ $previous_semester_year := "" }}
-        {{ if eq (slicestr .Site.Params.current_semester 0 2) "ws" }}
-            {{ $previous_semester_type = "ss" }}
+        {{ if eq (slicestr .Site.Params.current_semester 0 2) "ss" }}
+            {{ $previous_semester_type = "ws" }}
             {{ $previous_semester_year = slicestr .Site.Params.current_semester 2 }}
         {{ else }}
-            {{ $previous_semester_type = "ws" }}
+            {{ $previous_semester_type = "ss" }}
             {{ $previous_semester_year = sub (int (slicestr .Site.Params.current_semester 2)) 1 }}
         {{ end }}
         <li><a href="/{{ $previous_semester_type }}{{ $previous_semester_year }}">Archive</a></li>

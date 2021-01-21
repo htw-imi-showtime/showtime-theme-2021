@@ -1,8 +1,9 @@
 {{ define "main" }}
 <header>
     <h1>
-        {{ .Title }} <br>
-        <span class="underscore-spacer">_</span>
+        {{ .Title }}
+        <span class="light block">{{ partial "semester" (dict "type" "short" "semester" .Site.Params.current_semester) }}</span>
+        <span class="underscore-spacer"> </span>
     </h1>
     <section class="underscore">
         <div class="spacer"></div>
