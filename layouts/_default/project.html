@@ -2,7 +2,7 @@
     <div class="background {{ .Type | lower }}">
         <header class="project-header">
             <h1>
-                <span class="type">{{ .Params.project_id }} {{ .Type }}</span>
+                <span class="type">{{ .CurrentSection.Params.project_id }} {{ .Type }}</span>
                 {{ .CurrentSection.Title }}
                 <span class="underscore-spacer"> </span>
             </h1>

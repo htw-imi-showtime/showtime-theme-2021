@@ -19,7 +19,7 @@
 
 <figure>
     <img src="{{ ($image.Get "src").RelPermalink }}" alt="{{ $image.Get "alt" }}">
-    {{ if $image.Get "caption" }}
-    <figcaption>{{ $image.Get "caption" }}</figcaption>
-    {{ end }}
+{{ if $image.Get "caption" }}
+<figcaption>{{ $image.Get "caption" }}</figcaption>
+{{ end }}
 </figure>
