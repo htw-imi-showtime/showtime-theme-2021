@@ -1,9 +1,8 @@
 {{ define "main" }}
     <header>
         <h1>
-            {{ .Title }} <br>
-            <span class="light">{{ partial "semester" (dict "type" "short" "semester" .Site.Params.current_semester) }}</span>
-
+            {{ .Title }}
+            <span class="light block">{{ partial "semester" (dict "type" "short" "semester" .Site.Params.current_semester) }}</span>
             <span class="underscore-spacer"> </span>
         </h1>
         <section class="underscore">
@@ -16,7 +15,7 @@
         {{ range sort (where (where $current_semester "Kind" "section") "Type" "!=" .Site.Params.current_semester) "Title" }}
             <section class="projects-list-entry">
                 <div>
-                    <span class="type">{{ .Type }}</span>
+                    <span class="type">{{ .Params.project_id }} {{ .Type }}</span>
                     <h3>{{ .Title }}</h3>
                     <p>{{ .Params.card_description }}</p>
                     <a href="{{ .RelPermalink }}">-> Details</a>

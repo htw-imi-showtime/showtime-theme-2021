@@ -5,64 +5,43 @@
     <div class="content">
         <div>
             <div>
-                <h1>IMI<span class="light">×</span>Showtime<br>
-                    <span class="light">WiSe 20/21</span></h1>
-                <p><strong>Showcase der Praxisprojekte<br>
-                    Wintersemester 2020/2021</strong><br>
-                    Internationale Medieninformatik B/M<br>
-                    HTW Berlin</p>
+                <h1>
+                    IMI<span class="light">×</span>Showtime<br>
+                    <span class="light">{{ partial "semester" (dict "type" "short" "semester" .Site.Params.current_semester) }}</span>
+                </h1>
+                <p>
+                    <strong>
+                        Projects showcase<br>
+                        {{ partial "semester" (dict "type" "long" "semester" .Site.Params.current_semester) }}
+                    </strong><br>
+                    International Media and Computing B/M<br>
+                    HTW Berlin
+                </p>
             </div>
             <img src="/img/showtime-keyvisual.svg" alt="IMI-Showtime keyvisual">
         </div>
         <div>
             <a href="#down"><img src="/img/arrow-down.svg" alt="arrow down"></a>
-            <h1><span class="light">_</span><br>
-                12/02/2021<br>
-                <span class="light">REMOTE</span></h1>
+            <h1>
+                <span class="light">_</span><br>
+                {{ .Params.showtime_date }}<br>
+                <span class="light">{{ .Params.showtime_place }}</span>
+            </h1>
         </div>
     </div>
 </section>
 <section id="down">
     <main>
-        <section class="teaser">
-            <h4 class="category">about showtime</h4>
-            <h3>This is a catchy Headline</h3>
+        {{ .Content }}
+        <section class="call-to-action">
+            <h3>Work with<br><span class="light">our students</span></h3>
             <div>
-                <p>Every term a group of students consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
-                    <br>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                <p>
+                    We’re always looking for new exciting partners consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </p>
+                <a href="/contact"><button>-> contact us</button></a>
             </div>
-            <hr>
-        </section>
-        <section class="teaser">
-            <h4 class="category">projects</h4>
-            <h3>One Term Twelve Projects</h3>
-            <div>
-                <p>The Students worked on diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-                <a href="#">-> discover_the_projects</a>
-            </div>
-
-            <hr>
-        </section>
-        <section class="teaser">
-            <h4 class="category">schedule</h4>
-            <h3>This is a catchy Headline</h3>
-            <div>
-                <p>All the Apps will be presented labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-                <a href="#">-> check_the_schedule</a>
-            </div>
-            <hr>
         </section>
     </main>
-    <div class="call-to-action">
-        <h3>Work with<br><span class="light">our students</span></h3>
-        <div>
-            <p>
-                We’re always looking for new exciting partners consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-            </p>
-            <a href="#"><button>-> contact us</button></a>
-        </div>
-    </div>
 </section>
 {{ end }}

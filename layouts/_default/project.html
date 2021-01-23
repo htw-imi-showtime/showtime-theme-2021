@@ -2,20 +2,24 @@
     <div class="background {{ .Type | lower }}">
         <header class="project-header">
             <h1>
-                <span class="type">{{ .Type }}</span>
+                <span class="type">{{ .Params.project_id }} {{ .Type }}</span>
                 {{ .CurrentSection.Title }}
                 <span class="underscore-spacer"> </span>
             </h1>
             <section style="text-align: right;">
                 <div class="spacer"></div>
-                <h4>Team</h4>
-                <ul>
-                    {{ range .CurrentSection.Params.team }}
-                        <li>{{ . }}</li>
-                    {{ end }}
-                </ul>
-                <h4>Supervision</h4>
-                {{ .CurrentSection.Params.supervisor }}
+                {{ if .CurrentSection.Params.team }}
+                    <h4>Team</h4>
+                    <ul>
+                        {{ range .CurrentSection.Params.team }}
+                            <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                {{ end }}
+                {{ if .CurrentSection.Params.supervisor }}
+                    <h4>Supervision</h4>
+                    {{ .CurrentSection.Params.supervisor }}
+                {{ end }}
             </section>
         </header>
     </div>
