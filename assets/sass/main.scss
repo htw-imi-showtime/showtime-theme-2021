@@ -301,6 +301,7 @@ span.type {
     color: $color-primary;
     font-weight: 100;
     font-size: 1rem;
+    line-height: 100%;
     display: block;
 
     &::after {
@@ -598,7 +599,7 @@ span.type {
 
     .intro {
         margin-left: 0;
-        margin-bottom: 5rem;
+        margin-bottom: 6rem;
     }
 
     & > p {
@@ -610,14 +611,27 @@ span.type {
     }
 
     ul {
-        list-style: disc;
-        margin: 1em 0;
-        padding-inline-start: 3em;
+        list-style: none;
+        margin: 0;
+
+        li {
+            margin-left: 2rem;
+            margin-top: .5rem;
+        }
+
+        li::before {
+            content: "-> ";
+            color:  $color-primary;
+            margin-left: -2rem;
+        }
+    }
+
+    section, figure, .mediathek-embed {
+        margin: 6rem 0;
     }
 
     section {
         display: flex;
-        margin: 4rem 0;
 
         h3 {
             flex: 2;
@@ -637,7 +651,6 @@ span.type {
     }
 
     .mediathek-embed {
-        margin: 8rem 0;
 
         .mediathek-player {
             position: relative;
@@ -659,10 +672,8 @@ span.type {
     }
 
     figure {
-        margin: 8rem 0;
-
         figcaption {
-            font-size: 1.15rem;
+            margin-top: 1rem;
             color: $color-primary;
             text-align: right;
             text-transform: uppercase;
@@ -681,6 +692,30 @@ span.type {
         blockquote {
             font-style: italic;
             margin: 0 1/8*100% 0 2/8*100%;
+        }
+    }
+
+    .team {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        figure {
+            width: 1/3 * 100%;
+            padding: 0 2rem;
+            margin: 0 0 3rem 0;
+
+            img {
+                border-radius: 50%;
+            }
+
+            figcaption {
+                margin: 1rem 0 0 0;
+                text-align: center;
+                text-transform: none;
+                font-weight: bold;
+
+            }
         }
     }
 }
