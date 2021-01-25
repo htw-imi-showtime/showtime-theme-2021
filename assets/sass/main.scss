@@ -738,28 +738,22 @@ span.type {
 }
 
 .schedule > section {
-    div {
+    ul > li {
         display: flex;
-        justify-content: space-between;
+        margin-top: 1rem;
 
-        h2 {
-            width: calc(1/4 * (100% - 4.5rem));
-            font-size: 1rem;
-            line-height: 100%;
+        p {
+            padding-top: .5rem;
+            width: 1/8 * 100%;
         }
-    }
-    ul {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
 
-        li {
+        div {
+            flex-grow: 2;
             display: flex;
             justify-content: space-between;
             flex-direction: column;
-            width: calc(1/4 * (100% - 4.5rem));
             box-sizing: border-box;
-            min-height: 11rem;
+            min-height: 8rem;
             padding: 1rem;
 
             h3 {
@@ -778,22 +772,9 @@ span.type {
             }
         }
 
-        .time {
-            min-height: auto;
-            width: 100%;
-            padding: 0;
-            margin-top: 1rem;
-            line-height: 100%;
-        }
-
         .general {
             border-top: $color-primary 2px solid;
-            width: 100%;
             background-color: transparentize($color-primary, 0.9);
-        }
-
-        .empty {
-            background: center no-repeat url("/img/diagonal.svg");
         }
 
         .bachelor {
@@ -1138,6 +1119,12 @@ span.type {
 
         p {
             font-size: 1rem;
+        }
+    }
+
+    .schedule > section {
+        ul > li {
+            display: block;
         }
     }
 
