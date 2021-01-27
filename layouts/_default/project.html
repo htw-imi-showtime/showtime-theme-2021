@@ -23,13 +23,32 @@
             </section>
         </header>
     </div>
-    <div class="project-menu background {{ .Type | lower }}">
+    <div class="project-menu desktop-menu background {{ .Type | lower }}">
         <ul>
             <li {{if .IsNode }}class="active"{{ end }}><a href="{{ .CurrentSection.RelPermalink }}">Overview</a></li>
             {{ range .CurrentSection.Pages }}
             <li {{if eq . $ }}class="active"{{ end }}><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
             {{ end }}
         </ul>
+    </div>
+    <div class="project-menu mobile-menu background {{ .Type | lower }}">
+        <ul>
+            <li {{if .IsNode }}class="active"{{ end }}><a href="{{ .CurrentSection.RelPermalink }}">Overview</a></li>
+            {{ range where .CurrentSection.Pages "Params.weight" "le" 2 }}
+            <li {{if eq . $ }}class="active"{{ end }}><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+        </ul>
+        <input type="checkbox" id="project-menu-button">
+        <label for="project-menu-button">
+            <span></span>
+        </label>
+        <div class="dropdown-menu">
+            <ul>
+                {{ range where .CurrentSection.Pages "Params.weight" "gt" 2 }}
+                <li {{if eq . $ }}class="active"{{ end }}><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                {{ end }}
+            </ul>
+        </div>
     </div>
     <main class="project">
         {{ if .IsNode }}
