@@ -19,7 +19,7 @@
     </header>
     <main>
         {{ $semester_pages := where (where (where .Site.Pages "Section" .Title) "Kind" "section") "Type" "!=" .Title }}
-        {{ range sort $semester_pages "Title" }}
+        {{ range sort $semester_pages "Params.project_id" }}
             <section class="projects-list-entry">
                 <div>
                     <span class="type">{{ .Params.project_id }} {{ .Type }}</span>

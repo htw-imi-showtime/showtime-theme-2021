@@ -12,7 +12,7 @@
     </header>
     <main>
         {{ $current_semester := where .Site.Pages "Section" .Site.Params.current_semester }}
-        {{ range sort (where (where $current_semester "Kind" "section") "Type" "!=" .Site.Params.current_semester) "Title" }}
+        {{ range sort (where (where $current_semester "Kind" "section") "Type" "!=" .Site.Params.current_semester) "Params.project_id" }}
             <section class="projects-list-entry">
                 <div>
                     <span class="type">{{ .Params.project_id }} {{ .Type }}</span>
