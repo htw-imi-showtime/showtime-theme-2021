@@ -583,6 +583,10 @@ span.type {
     }
 }
 
+.mobile-menu {
+    display: none;
+}
+
 .project {
     > *:first-child {
         margin-top: 0;
@@ -1233,5 +1237,120 @@ span.type {
     .project-menu {
         top: 4rem;
         margin-bottom: 6rem;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+            display: none;
+
+            &:checked ~ .dropdown-menu {
+                display: block;
+            }
+        }
+
+        label {
+            cursor: pointer;
+            padding: 10px 1/18*100%;
+            user-select: none;
+
+            span {
+                background: $color-background;
+                display: block;
+                height: 4px;
+                width: 4px;
+                border-radius: 50%;
+                position: relative;
+                transition: background .2s ease-out;
+
+                &::before, &::after {
+                    background: $color-background;
+                    content: '';
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 50%;
+                    position: absolute;
+                    transition: all .2s ease-out;
+                }
+
+                &::before {
+                    top: -6px;
+                }
+
+                &::after {
+                    top: 6px;
+                }
+            }
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 2.5rem;
+            right: 1rem;
+            width: 50%;
+            padding: 0.5rem 0;
+            background-color: $color-background;
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                text-align: right;
+                margin: 0;
+
+                li {
+                    width: 100%;
+                    padding: 0.5rem 1.5rem;
+                }
+            }
+
+            a {
+                color: $color-link;
+            }
+        }
+
+        &.bachelor {
+            .dropdown-menu {
+                border: 1px solid $color-primary;
+
+                li a {
+                    color: $color-primary;
+                }
+
+                li.active {
+                    background-color: $color-primary;
+
+                    a {
+                        color: $color-background;
+                    }
+                }
+            }
+        }
+
+        &.master {
+            .dropdown-menu {
+                border: 1px solid $color-dark;
+
+                li a {
+                    color: $color-dark;
+                }
+
+                li.active {
+                    background-color: $color-dark;
+
+                    a {
+                        color: $color-primary;
+                    }
+                }
+            }
+        }
     }
 }
