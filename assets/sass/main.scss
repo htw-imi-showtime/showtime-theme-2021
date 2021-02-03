@@ -10,6 +10,11 @@ html {
     color: $color-dark;
     background-color: $color-background;
     scroll-behavior: smooth;
+    transition: 2s ease-in-out;
+
+    &.roll {
+        transform: rotate(360deg);
+    }
 }
 
 body {
