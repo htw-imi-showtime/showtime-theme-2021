@@ -18,6 +18,9 @@
                 <p>{{ .time }}</p>
                 <div class="{{ .class }}">
                     <h3 class="no-underscore">{{ .title }}</h3>
+                    {{ if isset . "text"}}
+                      {{ .text }}
+                    {{ end }}
                     {{ if isset . "projectDetail"}}
                     <a href="{{ .projectDetail }}">-> Project_Details</a>
                     {{ end }}
