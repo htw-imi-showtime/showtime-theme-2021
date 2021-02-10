@@ -3,6 +3,7 @@
     <img class="deco-01" src="/img/deco-rect-01.svg" alt="decorative element">
     <img class="deco-02" src="/img/deco-rect-02.svg" alt="decorative element">
     <div class="content">
+        {{ if eq .Params.is_live "false" }}
         <div>
             <div>
                 <h1>
@@ -20,13 +21,30 @@
             </div>
             <img src="/img/showtime-keyvisual.svg" alt="IMI-Showtime keyvisual">
         </div>
+        {{ else }}
+        <div class="live">
+            <img class="keyvisual-live" src="/img/showtime-keyvisual-live.svg" alt="IMI-Showtime keyvisual">
+            <h1>
+                IMI<span class="light">×</span>ST
+                <span class="light">{{ partial "semester" (dict "semester" .Site.Params.current_semester) }} is live!</span>
+            </h1>
+            <div>
+                <a href="{{ .Params.zoom_link }}"><button>Join via Zoom!</button></a>
+                <a href="/zoom-help">How do I zoom?</a>
+            </div>
+
+        </div>
+
+        {{end}}
         <div>
             <a href="#down"><img src="/img/arrow-down.svg" alt="arrow down"></a>
+            {{ if eq .Params.is_live "false" }}
             <h1>
                 <span class="light">_</span><br>
                 {{ .Params.showtime_date }}<br>
                 <span class="light">{{ .Params.showtime_place }}</span>
             </h1>
+            {{end}}
         </div>
     </div>
 </section>
