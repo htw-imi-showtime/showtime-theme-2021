@@ -784,6 +784,11 @@ span.type {
             }
         }
     }
+
+    .infobox {
+        border: 0.3rem solid $color-primary;
+        padding: 1.5rem;
+    }
 }
 
 .schedule > section {

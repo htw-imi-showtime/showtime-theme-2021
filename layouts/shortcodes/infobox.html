@@ -1,3 +1,13 @@
-<div class="infobox">
-    {{ .Inner | markdownify }}
-</div>
+<section class="infobox">
+    <h3>
+        {{ if .IsNamedParams }}
+        {{ .Get "title" }}
+        {{ else }}
+        {{ .Get 0 }}
+        {{ end }}
+    </h3>
+    <div class="spacer"></div>
+    <div class="content">
+        {{ .Inner | markdownify }}
+    </div>
+</section>
