@@ -795,9 +795,11 @@ span.type {
         display: flex;
         margin-top: 1rem;
 
+        $time-width: 1/8 * 100%;
+
         p {
             padding-top: .4rem;
-            width: 1/8 * 100%;
+            width: $time-width;
         }
 
         div {
@@ -808,6 +810,7 @@ span.type {
             box-sizing: border-box;
             min-height: 8rem;
             padding: 1rem;
+            width: 100% - $time-width;
 
             h3 {
                 margin: 0 0 1rem 0;
@@ -1202,6 +1205,10 @@ span.type {
     .schedule > section {
         ul > li {
             display: block;
+
+            div {
+                width: inherit;
+            }
         }
     }
 
