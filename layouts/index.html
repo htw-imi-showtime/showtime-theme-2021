@@ -30,7 +30,7 @@
             </h1>
             <div>
                 <a href="{{ .Params.zoom_link }}"><button>Join via Zoom!</button></a>
-                <a href="/zoom-help">How do I zoom?</a>
+                <a href="{{ "zoom-help" | absURL }}">How do I zoom?</a>
             </div>
 
         </div>
@@ -56,7 +56,7 @@
                 <p>
                     We’re always looking for new exciting partners for new projects.
                     Browse through the  <a href="{{ "projects" | absURL }}">current projects</a>
-                    or <a href="{{ "ss20" | absURL }}"> former ones in the archive</a> to get an idea
+                    or <a href="{{ "ss20" | relURL }}"> former ones in the archive</a> to get an idea
                       what might be possible.
                 </p>
                 <a href="{{ "contact" | absURL }}"><button>-> contact us</button></a>
