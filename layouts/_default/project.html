@@ -54,19 +54,19 @@
         {{ if .IsNode }}
             {{ with .CurrentSection.Params.demo_link }}
             <a class="project-link" href="{{ . }}">
-                <img src="/img/demo.svg" alt="Demo Link Icon">
+                <img src = "{{ "img/demo.svg" | absURL }}" alt="Demo Link Icon">
                 Demo
             </a>
             {{ end }}
             {{ with .CurrentSection.Params.source_link }}
             <a class="project-link" href="{{ . }}">
-                <img src="/img/code.svg" alt="Demo Link Icon">
+                <img src = "{{ "img/code.svg" | absURL }}" alt="Demo Link Icon">
                 Source_Code
             </a>
             {{ end }}
             {{ with .CurrentSection.Params.website_link }}
             <a class="project-link" href="{{ . }}">
-                <img src="/img/website.svg" alt="Demo Link Icon">
+                <img src = "{{ "img/website.svg" | absURL }}" alt="Demo Link Icon">
                 Website
             </a>
             {{ end }}
