@@ -2,25 +2,10 @@
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <meta charset="UTF-8">
 
-{{ $options1 := dict "transpiler" "libsass" "targetPath" "css/style2.css" }}
-{{ $sassTemplate := resources.Get "sass/_font-faces.scss.template" }}
-{{ $style := $sassTemplate | resources.ExecuteAsTemplate "_from_template.scss" . | resources.ToCSS $options1}}
-
-
-{{ $sassTemplate := resources.Get "sass/main.template" }}
-{{ $style := $sassTemplate | resources.ExecuteAsTemplate "main.scss" . | resources.ToCSS }}
-
-{{ $options := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
-{{ with resources.Get "sass/main.scss" | toCSS $options  | fingerprint }}
-  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-{{ end }}
-
-{{ $options2 := dict "transpiler" "libsass" "targetPath" "css/style-with-template.css" }}
-{{ $sassTemplate2 := resources.Get "sass/main.template" }}
-{{ $style2 := $sassTemplate | resources.ExecuteAsTemplate "main.scss" . | resources.ToCSS }}
-
-{{ with $sassTemplate2  | resources.ExecuteAsTemplate "main.scss" . | toCSS $options2  | fingerprint }}
-  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{  $sassTemplate := resources.Get "sass/main.template" }}
+{{- $options := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
+{{- with $sassTemplate  | resources.ExecuteAsTemplate "main.scss" . | toCSS $options  | minify | fingerprint -}}
+   <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
 {{ end }}
 
 <script src={{ "js/title-animate.js" | absURL }} charset="utf-8"></script>
