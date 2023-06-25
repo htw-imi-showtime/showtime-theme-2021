@@ -2,10 +2,10 @@
     <section>
         <a href="{{ .Site.BaseURL }}" class="animate-trigger"><strong>IMI<span class="light">⨯</span><span class="animate">ST</span></strong> {{ partial "semester" (dict "semester" .Site.Params.current_semester)}}</a>
         <ul>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/privacy-policy">Privacy Policy</a></li>
-            <li><a href="/imprint">Imprint</a></li>
+            <li><a href="{{ "contact" | absURL }}">Contact</a></li>
+            <li><a href="{{ "privacy-policy" | absURL }}">Privacy Policy</a></li>
+            <li><a href="{{ "imprint" | absURL }}">Imprint</a></li>
         </ul>
     </section>
-    <img src="/img/htw-logo.png" alt="HTW Logo">
+    <img src="{{ "img/htw-logo.png" | absURL }}" alt="HTW Logo">
 </footer>
