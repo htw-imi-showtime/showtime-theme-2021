@@ -1,4 +1,5 @@
 {{ define "main" }}
+
     <header>
         <h1>
             Archive
@@ -17,27 +18,6 @@
             </div>
         </section>
     </header>
-    <main>
-        {{ $semester_pages := where (where (where .Site.Pages "Section" .Title) "Kind" "section") "Type" "!=" .Title }}
-        {{ range sort $semester_pages "Params.project_id" }}
-            <section class="projects-list-entry">
-                <div>
-                    <span class="type">{{ .Params.project_id }} {{ .Type }}</span>
-                    <a href="{{ .RelPermalink }}">
-                        <h3>{{ .Title }}</h3>
-                    </a>
-                    <p>{{ .Params.card_description }}</p>
-                    <a href="{{ .RelPermalink }}">-> Details</a>
-                </div>
-                {{ $image := newScratch }}
-                {{ if (and .Params.card_image (.Resources.GetMatch .Params.card_image)) }}
-                {{ $image.Set "src" (.Resources.GetMatch .Params.card_image).RelPermalink }}
-                {{ else }}
-                {{ $image.Set "src" (printf "%s/images/placeholder.png" .Site.BaseURL) }}
-                {{ end }}
-                <img src="{{ $image.Get "src" }}" alt="{{ .Title }}">
-            </section>
-            <hr class="alternate">
-        {{ end }}
-    </main>
+    {{ partial "project_list_partial.html" . }}
+
 {{ end }}

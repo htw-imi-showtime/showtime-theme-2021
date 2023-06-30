@@ -1,0 +1,29 @@
+
+
+{{ $projects := slice }}
+{{ range .Pages }} {{ $projects = append .Pages $projects}} {{ end }}
+{{ $projects = sort $projects "Params.project_id"}}
+<br>projects: {{ $projects }}
+
+<main>
+    {{ range $projects }}
+        <section class="projects-list-entry">
+            <div>
+                <span class="type">{{ .Params.project_id }} {{ .Type }}</span>
+                <a href="{{ .RelPermalink }}">
+                    <h3 id ="{{ .Params.project_id }}">{{ .Title }}</h3>
+                </a>
+                <p>{{ .Params.card_description }}</p>
+                <a href="{{ .RelPermalink }}">-> Details</a>
+            </div>
+            {{ $image := newScratch }}
+            {{ if (and .Params.card_image (.Resources.GetMatch .Params.card_image)) }}
+                {{ $image.Set "src" (.Resources.GetMatch .Params.card_image).RelPermalink }}
+            {{ else }}
+                {{ $image.Set "src" (printf "%s/images/placeholder.png" .Site.BaseURL) }}
+            {{ end }}
+            <img src="{{ $image.Get "src" }}" alt="{{ .Title }}">
+        </section>
+        <hr class="alternate">
+    {{ end }}
+</main>
