@@ -6,18 +6,21 @@
             <span class="light block">{{ partial "semester" (dict "type" "short" "semester" .Title) }}</span>
             <span class="underscore-spacer"> </span>
         </h1>
+       
         <section class="underscore">
             <div class="spacer"></div>
             <p>Explore the projects of previous semesters:</p>
+           
             <div class="select-wrapper">
                 <select name="semester" id="semester-select">
-                    {{ range (where .Site.Sections "Title" "!=" .Site.Params.current_semester) }}
-                        <option value="{{ .Title | relURL }}" {{ if eq .Title $.Title }}selected{{ end }}>{{ .Params.full_title }}</option>
+                    {{ range  (.Site.GetPage "archive").Pages.ByWeight }}
+                         <option value="{{ .RelPermalink }}" {{ if eq .Title $.Title }}selected{{ end }}>{{ .Params.full_title }}</option>
                     {{ end }}
                 </select>
             </div>
         </section>
     </header>
+
     {{ partial "project_list_partial.html" . }}
 
 {{ end }}
