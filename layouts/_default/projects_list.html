@@ -5,6 +5,7 @@
 {{ $title := "Archive" }}
 {{ $show_semester_selection := true}}
 
+
 {{ if eq .Title "Projects" }}
     {{ $semester = .Site.Params.current_semester }}
    {{  $title = .Title }}
@@ -22,30 +23,25 @@
 
         <section class="underscore">
             <div class="spacer"></div>
-            
-             {{ if $show_semester_selection }}
+
+            {{ if $show_semester_selection }}
            
-            <p>Explore the projects of previous semesters:</p>
-           
-            <div class="select-wrapper">
-                <select name="semester" id="semester-select">
-                    {{ range  (.Site.GetPage "archive").Pages.ByWeight }}
-                         <option value="{{ .RelPermalink }}" {{ if eq .Title $.Title }}selected{{ end }}>{{ .Params.full_title }}</option>
-                    {{ end }}
-                </select>
-            </div>
+                {{ partial "semester_selection.html" . }}
            
             {{ end }}
 
             {{- .Content -}}
         </section>
-
-
-        
        
     </header>
 
-        {{ $current_semester_page := .Site.GetPage .Site.Params.current_semester}}
+         {{ $current_semester_page := .Site.GetPage $semester}}
+         <!--
+        <hr> {{ range $current_semester_page.Pages }}
+        {{ .RelPermalink }}<br>
+        {{ end }}
+        <hr>
+        -->
         {{ partial "project_list_partial.html" $current_semester_page }}
 
 {{ end }}

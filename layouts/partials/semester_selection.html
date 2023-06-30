@@ -1,0 +1,11 @@
+
+
+<p>Explore the projects of previous semesters:</p>
+
+<div class="select-wrapper">
+   <select name="semester" id="semester-select">
+       {{ range  (.Site.GetPage "archive").Pages.ByWeight }}
+            <option value="{{ .RelPermalink }}" {{ if eq .Title $.Title }}selected{{ end }}>{{ .Params.full_title }}</option>
+       {{ end }}
+   </select>
+</div>
