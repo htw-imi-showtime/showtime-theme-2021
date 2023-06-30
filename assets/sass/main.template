@@ -854,7 +854,10 @@ span.type {
             a:hover {
                 color: $color-accent;
             }
+
+           
         }
+
 
         .general {
             border-top: $color-primary 2px solid;
@@ -1461,4 +1464,9 @@ span.type {
             }
         }
     }
+}
+.warn { 
+    color: $color-accent;
+    font-weight: bold;
+    font-size: 2rem;
 }
