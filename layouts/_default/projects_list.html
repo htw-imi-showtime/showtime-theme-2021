@@ -1,14 +1,48 @@
 {{ define "main" }}
+
+
+{{ $semester := .Title }}
+{{ $title := "Archive" }}
+{{ $show_semester_selection := true}}
+
+{{ if eq .Title "Projects" }}
+    {{ $semester = .Site.Params.current_semester }}
+   {{  $title = .Title }}
+   {{ $show_semester_selection = false}}
+{{ end }}
+
+
     <header>
         <h1>
-            {{ .Title }}
-            <span class="light block">{{ partial "semester" (dict "type" "short" "semester" .Site.Params.current_semester) }}</span>
+            {{ $title }}
+            <span class="light block">
+                {{ partial "semester" (dict "type" "short" "semester" $semester) }}</span>
             <span class="underscore-spacer"> </span>
         </h1>
+
         <section class="underscore">
             <div class="spacer"></div>
-            {{ .Content }}
+            
+             {{ if $show_semester_selection }}
+           
+            <p>Explore the projects of previous semesters:</p>
+           
+            <div class="select-wrapper">
+                <select name="semester" id="semester-select">
+                    {{ range  (.Site.GetPage "archive").Pages.ByWeight }}
+                         <option value="{{ .RelPermalink }}" {{ if eq .Title $.Title }}selected{{ end }}>{{ .Params.full_title }}</option>
+                    {{ end }}
+                </select>
+            </div>
+           
+            {{ end }}
+
+            {{- .Content -}}
         </section>
+
+
+        
+       
     </header>
 
         {{ $current_semester_page := .Site.GetPage .Site.Params.current_semester}}
