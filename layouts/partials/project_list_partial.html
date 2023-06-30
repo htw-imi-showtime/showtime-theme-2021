@@ -1,10 +1,6 @@
-
-
 {{ $projects := slice }}
 {{ range .Pages }} {{ $projects = append .Pages $projects}} {{ end }}
 {{ $projects = sort $projects "Params.project_id"}}
-<br>projects: {{ $projects }}
-
 <main>
     {{ range $projects }}
         <section class="projects-list-entry">
