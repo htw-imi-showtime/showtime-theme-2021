@@ -15,7 +15,7 @@
             {{ $previous_semester_type = "ws" }}
             {{ $previous_semester_year = sub (int (slicestr .Site.Params.current_semester 2)) 1 }}
         {{ end }}
-        <li><a href="{{printf "%s%d" $previous_semester_type $previous_semester_year | absURL  }}">Archive</a></li>
+        <li><a href="{{printf "archive/%s%d" $previous_semester_type $previous_semester_year | absURL  }}">Archive</a></li>
         <li><a href="{{ "contact"  | absURL }}">Contact</a></li>
    </ul>
 </nav>
