@@ -2,15 +2,10 @@
 
 <p>Explore the projects of previous semesters:</p>
 
-{{ $path_prefix := "/" }}
-{{ if (eq .Site.BaseURL .Site.Params.Production_site) }}
-{{ $path_prefix = "" }}
-{{ end }}
-
 <div class="select-wrapper">
    <select name="semester" id="semester-select">
        {{ range  (.Site.GetPage "archive").Pages.ByWeight }}
-            <option value="{{ .RelPermalink | replaceRE "^/" $path_prefix }}" {{ if eq .Title $.Title }}selected{{ end }}>{{ .Params.full_title }}</option>
+            <option value="{{ .RelPermalink }}" {{ if eq .Title $.Title }}selected{{ end }}>{{ .Params.full_title }}</option>
        {{ end }}
    </select>
 </div>
