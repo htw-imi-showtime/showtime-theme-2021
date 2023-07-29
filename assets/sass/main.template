@@ -1469,4 +1469,7 @@ span.type {
     color: $color-accent;
     font-weight: bold;
     font-size: 2rem;
+    &.small {
+        font-size: 1rem;
+    }
 }

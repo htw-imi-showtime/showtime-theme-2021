@@ -2,9 +2,10 @@
 <nav class="background {{ .Type | lower }}">
     <a href="{{ .Site.BaseURL }}" class="animate-trigger"><strong>IMI<span class="light">×</span><span class="animate">ST</span></strong> <span class="light">{{ partial "semester" (dict "semester" .Site.Params.current_semester)}}</span></a>
     {{ if not (eq .Site.BaseURL .Site.Params.Production_site )}} 
-    <div class = "warn"><a href="{{ .Site.Params.Production_site }}">Preview Site! 
+    <div class = "warn">Preview Site! 
         ({{ if .Site.BuildDrafts }}with{{ else }}without{{ end }} drafts)
-        </a></div>
+      <div class = "warn small">Production Site: <a href="{{ .Site.Params.Production_site }}">{{ .Site.Params.Production_site }}</a></div>
+    </div>  
     {{ end }}
     <ul>
         <li><a href="{{ "projects" | absURL }}">Projects</a></li>
