@@ -1,9 +1,21 @@
 {{ define "main" }}
+
+{{ "<!--" | safeHTML }} 
+DEBUG
+.Params.is_live: {{ .Params.is_live }} 
+.Params: {{ .Params }} 
+
+eq .Params.is_live "false": {{ eq .Params.is_live "false" }}
+replaced with 'if true' below
+
+.Params.is_live_bool  {{ .Params.is_live_bool }}
+eq .Params.is_live_bool "false": {{ eq .Params.is_live_bool "false" }}
+{{ "-->" | safeHTML }}
 <section class="start">
     <img class="deco-01" src="{{ "img/deco-rect-01.svg" | absURL }}" alt="decorative element">
     <img class="deco-02" src="{{ "img/deco-rect-02.svg" | absURL }}" alt="decorative element">
     <div class="content">
-        {{ if eq .Params.is_live "false" }}
+        {{ if true }}
         <div>
             <div>
                 <h1>
@@ -37,7 +49,7 @@
         {{end}}
         <div>
             <a href="#down"><img src="{{"img/arrow-down.svg" | absURL }}" alt="arrow down"></a>
-            {{ if eq .Params.is_live "false" }}
+            {{ if true }}
             <h1>
                 <span class="light">_</span><br>
                 {{ .Params.showtime_date }}<br>
