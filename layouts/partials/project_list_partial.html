@@ -3,11 +3,12 @@
 {{ $projects = sort $projects "Params.project_id"}}
 <main>
     {{ range $projects }}
+    <p id ="{{ .Params.project_id }}"></p>
         <section class="projects-list-entry">
             <div>
                 <span class="type">{{ .Params.project_id }} {{ .Type }}</span>
                 <a href="{{ .RelPermalink }}">
-                    <h3 id ="{{ .Params.project_id }}">{{ .Title }}</h3>
+                    <h3>{{ .Title }}</h3>
                 </a>
                 <p>{{ .Params.card_description }}</p>
                 <a href="{{ .RelPermalink }}">-> Details</a>
