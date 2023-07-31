@@ -13,16 +13,47 @@
 <main class="schedule">
     <section>
         <ul>
+            {{ $semester := .Site.Params.current_semester }}
+            {{ $semester_projects := where $.Site.Pages "Section" $semester}}
+            
             {{ range .Site.Data.schedule.slot }}
+            
+            {{ $slot_title := .title }}
+            {{ $slot_text := "" }}
+            {{ $slot_link := "#" }}
+            {{ $slot_class := "general" }}
+            {{ if isset . "class"}}
+                {{ $slot_class = .class }}
+            {{ end }}
+            {{ if isset . "text"}}
+                {{ $slot_text = .text }}
+            {{ end }}
+            {{ if isset . "projectDetail"}}
+                {{ $slot_link = .projectDetail }}
+            {{ end }}
+
+            {{ if isset . "project_id"}}
+                {{ $project_index := index (where $semester_projects ".Params.project_id" .project_id ) 0 }}
+                {{ with $project_index}}
+                    {{ $slot_title = printf "%s - %s" .Params.project_id .Title}}
+                    {{ $slot_link = .RelPermalink}}
+                {{ end }}
+                {{ if in $slot_link "bachelor" }}
+                    {{ $slot_class = "bachelor" }}
+                {{ else }}
+                    {{ if in $slot_link "master" }}
+                        {{ $slot_class = "master" }}
+                    {{ end}}
+                {{ end}}
+            {{ end }}
+     
             <li>
                 <p>{{ .time }}</p>
-                <div class="{{ .class }}">
-                    <h3 class="no-underscore">{{ .title }}</h3>
-                    {{ if isset . "text"}}
-                      {{ .text }}
-                    {{ end }}
-                    {{ if isset . "projectDetail"}}
-                    <a href="{{ .projectDetail | absURL }}">-> Project_Details</a>
+                <div class="{{ $slot_class }}">
+                    <h3 class="no-underscore">{{ $slot_title }}</h3>
+                    {{  $slot_text }}
+                    {{ if not (eq $slot_link "#") }}
+                    <a href="{{ $slot_link | absURL }}">-> Project_Details</a>
                     {{ end }}
                     {{ end }}
                 </div>
