@@ -4,8 +4,11 @@
 
 <div class="select-wrapper">
    <select name="semester" id="semester-select">
+  
        {{ range where .Site.Pages.ByWeight "Params.category" "project-archive" }}
             <option value="{{ .RelPermalink }}" {{ if eq .Title $.Title }}selected{{ end }}>{{ .Params.full_title }}</option>
        {{ end }}
+       <option value="{{ "archive" | absURL }}" {{ if eq "Project Overview" $.Title }}selected{{ end }}>Complete Overview</option>
+
    </select>
 </div>
