@@ -22,7 +22,7 @@
                       {{ .text }}
                     {{ end }}
                     {{ if isset . "projectDetail"}}
-                    <a href="{{ .projectDetail }}">-> Project_Details</a>
+                    <a href="{{ .projectDetail | absURL }}">-> Project_Details</a>
                     {{ end }}
                     {{ end }}
                 </div>
