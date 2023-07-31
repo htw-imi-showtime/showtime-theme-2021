@@ -874,7 +874,7 @@ span.type {
         }
 
         .master {
-            color: $color-background;
+            color: $color-primary;
             border-top: $color-primary 2px solid;
             background-color: $color-dark;
         }
