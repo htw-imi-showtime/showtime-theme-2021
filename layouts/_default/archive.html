@@ -5,12 +5,20 @@
         <span class="underscore-spacer"> </span>
     </h1>
     <section class="underscore">
+        {{ $archive_page := .GetPage .Site.Params.Archive_path }} 
         <div class="spacer"></div>
-
+        {{ if $archive_page}}
             {{ partial "semester_selection.html" . }}
-       
+        {{ end }}
 
         {{- .Content -}}
+        <p>
+        {{ with $archive_page}}
+            Complete Project Archive.
+        {{ else }}
+            Project Archive not included, only showing current semester.
+        {{ end }}
+        </p>
     </section>
 
 </header>
