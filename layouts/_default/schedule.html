@@ -38,13 +38,14 @@
                     {{ $slot_title = printf "%s - %s" .Params.project_id .Title}}
                     {{ $slot_link = .RelPermalink}}
                 {{ end }}
-                {{ if in $slot_link "bachelor" }}
+                {{ if in .project_id "B" }}
                     {{ $slot_class = "bachelor" }}
                 {{ else }}
-                    {{ if in $slot_link "master" }}
+                    {{ if in .project_id "M" }}
                         {{ $slot_class = "master" }}
                     {{ end}}
                 {{ end}}
+                
             {{ end }}
      
             <li>
