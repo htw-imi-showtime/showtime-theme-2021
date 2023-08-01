@@ -37,6 +37,9 @@
                 {{ with $project_index}}
                     {{ $slot_title = printf "%s - %s" .Params.project_id .Title}}
                     {{ $slot_link = .RelPermalink}}
+                    {{ with .Params.sub_title }}
+                        {{ $slot_text = printf "%s - %s"  $slot_text . | lower }}
+                    {{ end }}   
                 {{ end }}
                 {{ if in .project_id "B" }}
                     {{ $slot_class = "bachelor" }}
