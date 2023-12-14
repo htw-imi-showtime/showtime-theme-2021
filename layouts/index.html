@@ -40,6 +40,9 @@
             {{ if eq .Params.is_live "false" }}
             <h1>
                 <span class="light">_</span><br>
+                {{ $std := .Params.showtime_save_the_date }}
+                 {{ if (not (eq "" $std)) }}
+                {{ $std }}<br>{{ end }}
                 {{ .Params.showtime_date }}<br>
                 <span class="light">{{ .Params.showtime_place }}</span>
             </h1>
