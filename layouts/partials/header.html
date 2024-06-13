@@ -1,22 +1,2 @@
 
-<nav class="background {{ .Type | lower }}">
-    <a href="{{ .Site.BaseURL }}" class="animate-trigger"><strong>IMI<span class="light">×</span><span class="animate">ST</span></strong> <span class="light">{{ partial "semester" (dict "semester" .Site.Params.current_semester)}}</span></a>
-    {{ if not (eq .Site.BaseURL .Site.Params.Production_site )}} 
-    <div class = "warn">Preview Site! 
-        ({{ if .Site.BuildDrafts }}with{{ else }}without{{ end }} drafts)
-      <div class = "warn small">Production Site: <a href="{{ .Site.Params.Production_site }}">{{ .Site.Params.Production_site }}</a></div>
-    </div>  
-    {{ end }}
-    <ul>
-        <li><a href="{{ "projects" | absURL }}">Projects</a></li>
-        <li><a href="{{ "schedule" | absURL }}">Schedule</a></li>
-        <li><a href="{{ "dates" | absURL }}">Dates</a></li>
-        {{ $archive_page := .GetPage .Site.Params.Archive_path }}
-        {{ with $archive_page}}
-        <li><a href="{{ .Site.Params.Archive_path | relURL }}">Archive</a></li>
-        {{ else }}
-        <li><a href="{{ "archive" | relURL }}">Archive</a></li>
-        {{ end }}
-        <li><a href="{{ "contact"  | absURL }}">Contact</a></li>
-   </ul>
-</nav>
+<!-- moved to baseof.html due to https://github.com/gohugoio/hugo/issues/7936 -->

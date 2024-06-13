@@ -1,10 +1,33 @@
+{{ define "project_navigation" }}
+
+<li >
+    {{ $pages := sort .CurrentSection.Parent.Pages "Params.Project_id" }}
+    {{ range sort .CurrentSection.Parent.Pages "Params.Project_id" }} {{ .Params.project_id}} {{ end}}
+    /
+          {{ with $pages.Next .  }}
+          <a href="{{ .RelPermalink }}">&lt;</a>
+        {{ end }}{{ .CurrentSection.Params.project_id }} 
+
+        {{ with $pages.Prev .  }}
+        <a href="{{ .RelPermalink }}">&gt;</a>
+      {{ end }}
+    
+      
+  </li>
+
+{{ end }}
+
+
 {{ define "main" }}
     <div class="background {{ .Type | lower }}">
         <header class="project-header">
             <h1>
                 <span class="type">{{ .CurrentSection.Params.project_id }} {{ .Type }}</span>
                 {{ .CurrentSection.Title }}
-                <span class="underscore-spacer"> </span>
+                <span class="underscore-spacer"> 
+
+                    
+                </span>
             </h1>
             <section style="text-align: right;">
                 <div class="spacer"></div>
@@ -28,9 +51,9 @@
             <li {{if .IsNode }}class="active"{{ end }}><a href="{{ .CurrentSection.RelPermalink }}">Overview</a></li>
             {{ range .CurrentSection.Pages }}
             <li {{if eq . $ }}class="active"{{ end }}><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-            {{ end }}
+            {{ end }}       
         </ul>
-    </div>
+    </div>  
     <div class="project-menu mobile-menu background {{ .Type | lower }}">
         <ul>
             <li {{if .IsNode }}class="active"{{ end }}><a href="{{ .CurrentSection.RelPermalink }}">Overview</a></li>

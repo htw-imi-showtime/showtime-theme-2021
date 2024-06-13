@@ -1,4 +1,45 @@
 <footer>
+  {{ if .Site.Params.Debug }}
+    <ul>
+    {{ $this_project := .CurrentSection }}
+    <li>.CurrentSection: {{ .CurrentSection }}</li>
+    <li>.CurrentSection.Parent: {{ .CurrentSection.Parent }}</li>
+    {{ with .CurrentSection.Parent }}
+    <li>.CurrentSection.Parent.Pages: {{ .Pages }}</li>
+        ({{ range .Pages }}
+            {{ . }}, 
+        {{ end }})
+        <li>This:  {{ $this_project }}</li>
+        <li>Next:  {{ .Pages.Next . }}</li>
+        <li>Prev:  {{ .Pages.Prev . }}</li>
+        <li>NextInSection:  {{ $this_project.NextInSection  }}</li>
+        <li>PrevInSection:  #{{ $this_project.PrevInSection  }}##</li>
+    {{ end }}
+    
+        {{ with . }}
+        {{ $pages := .Pages  }}
+            
+        <h4>
+           {{ .}}<br>
+           {{ .CurrentSection }}
+           <br>
+           
+            {{ with $pages.Next .  }}
+            <a href="{{ .RelPermalink }}">&lt;</a>
+          {{ end }}{{ .CurrentSection.Params.project_id }} 
+
+          {{ with $pages.Prev .  }}
+          <a href="{{ .RelPermalink }}">&gt;</a>
+        {{ end }}
+      
+        {{ end }}
+        
+        </h4>
+
+
+      </li>
+    </ul>
+    {{ end }}
     <section>
         <a href="{{ .Site.BaseURL }}" class="animate-trigger"><strong>IMI<span class="light">⨯</span><span class="animate">ST</span></strong> {{ partial "semester" (dict "semester" .Site.Params.current_semester)}}</a>
         <ul>
@@ -8,4 +49,5 @@
         </ul>
     </section>
     <img src="{{ "img/htw-logo.png" | absURL }}" alt="HTW Logo">
+
 </footer>
