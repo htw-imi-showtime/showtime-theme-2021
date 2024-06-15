@@ -1,7 +1,5 @@
 <li >
 
-
-
     {{ $this_project := .CurrentSection}}
     {{ $this_semester := .CurrentSection.Parent.Parent }}
 
@@ -13,7 +11,6 @@
     {{ $prev_semester := $all_semester.Next $this_semester  }}
     {{ $next_semester := $all_semester.Prev $this_semester  }}
     
-
 
     {{- /* Get all projects ordered by semester, then project name . */ -}}
 
