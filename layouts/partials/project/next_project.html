@@ -1,6 +1,7 @@
 <li >
 
 
+
     {{ $this_project := .CurrentSection}}
     {{ $this_semester := .CurrentSection.Parent.Parent }}
 
@@ -20,6 +21,21 @@
     {{ end -}}
     
 
+
+    {{- /* Get all projects ordered by semester, then project name . */ -}}
+
+    {{ $all_projects := slice }}
+    {{ range $all_semester }}
+        {{- /* Bachelor/Master */ -}}
+        {{ range .Pages }}
+           {{ $projects_in_s := where .Pages "Params.project_id" "ne" "" }}
+           {{ $projects_in_s = sort $projects_in_s "Params.Project_id"}}
+           {{ $all_projects = $all_projects | append $projects_in_s }}
+        {{ end }}
+    {{ end }}
+
+   
+
     {{- /* Get all projects in this semester. */ -}}
 
     {{ $projects_in_this_semester := slice }}
@@ -34,9 +50,9 @@
     {{ $projects_in_this_semester := sort $projects_in_this_semester "Params.Project_id" }}
    
     {{- /* Project Prev/Next Navigation. */ -}}
-    
-   
-    {{ $pages := $projects_in_this_semester}}
+
+    {{ $pages := $all_projects}}
+
 
     {{- with $pages.Next $this_project  }}
           <a href="{{ .RelPermalink }}">&lt;</a>
