@@ -1,0 +1,28 @@
+<li >
+
+    {{- range .Ancestors.Reverse }}
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{- end }}
+    <!--<a href="{{ .RelPermalink }}">{{ .Title }}</a> -->
+
+    {{ $this_semester :=index (findRE "^/((ws|ss)..)/.*" .RelPermalink) 0 }}
+    this_semester {{ $this_semester}}//
+    {{ findRE "^/((ws|ss)..)/.*" .RelPermalink }}//
+    {{ findRE "master.*" .RelPermalink }}//
+    {{ range sort .Site.AllPages ".Weight" "desc" }}
+        {{ $part1:=index (findRE "/classes/([^/]*)/" .RelPermalink) 0}}
+        {{ $semester:= index (findRE "(w|s)+[0-9]+" $part1) 0 }}
+    {{ end }}
+
+{{ $this_project := .CurrentSection}}
+{{ $pages := sort .CurrentSection.Parent.Pages "Params.Project_id" }}
+      {{ with $pages.Next $this_project  }}
+      <a href="{{ .RelPermalink }}">&lt;</a>
+    {{ end }}{{ .CurrentSection.Params.project_id }} 
+
+    {{ with $pages.Prev $this_project  }}
+    <a href="{{ .RelPermalink }}">&gt;</a>
+    {{ end }}
+
+  
+</li>

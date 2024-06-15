@@ -1,20 +1,5 @@
 {{ define "project_navigation" }}
-
-<li >
-    {{ $pages := sort .CurrentSection.Parent.Pages "Params.Project_id" }}
-    {{ range sort .CurrentSection.Parent.Pages "Params.Project_id" }} {{ .Params.project_id}} {{ end}}
-    /
-          {{ with $pages.Next .  }}
-          <a href="{{ .RelPermalink }}">&lt;</a>
-        {{ end }}{{ .CurrentSection.Params.project_id }} 
-
-        {{ with $pages.Prev .  }}
-        <a href="{{ .RelPermalink }}">&gt;</a>
-      {{ end }}
-    
-      
-  </li>
-
+    {{ partial "project/next_project.html" . }}
 {{ end }}
 
 
