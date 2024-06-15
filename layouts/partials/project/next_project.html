@@ -9,8 +9,13 @@
     
  
     {{ $prev_semester := $all_semester.Next $this_semester  }}
+    {{ if not $prev_semester }}
+        {{ $prev_semester = index ($all_semester | last 1) 0 }}
+    {{ end }}
     {{ $next_semester := $all_semester.Prev $this_semester  }}
-    
+    {{ if not $next_semester }}
+        {{ $next_semester = index $all_semester  0 }}
+    {{ end }}
 
     {{- /* Get all projects ordered by semester, then project name . */ -}}
 
@@ -61,13 +66,13 @@
         */ -}}
     {{- with $prev_semester_project  }}
         <a href="{{ .RelPermalink }}">&lt;</a>
-    {{ end -}}
+    {{ else }}&nbsp;&nbsp;{{ end -}}
 
-    {{ $this_semester_name -}}
+    <a href="{{ $this_semester.RelPermalink }}">{{ $this_semester_name -}}</a>
 
     {{- with $next_semester_project  }}
         <a href="{{ .RelPermalink }}">&gt;</a>
-    {{ end -}}
+    {{ else }}&nbsp;&nbsp;{{ end -}}
 
 
     {{- /* Project Prev/Next Navigation. */ -}}
@@ -76,13 +81,13 @@
 
     {{- with $pages.Next $this_project  }}
     <a href="{{ .RelPermalink }}">&lt;</a>
-    {{ end -}}
+    {{ else }}&nbsp;&nbsp;{{ end -}}
     
     {{ $this_project.Params.project_id -}}
     
     {{- with $pages.Prev $this_project  }}
       <a href="{{ .RelPermalink }}">&gt;</a>
-    {{ end -}}
+    {{ else }}&nbsp;&nbsp;{{ end -}}
 
   
 </li>

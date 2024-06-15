@@ -1,3 +1,4 @@
+
 {{ $all_semester := where .Site.Pages.ByWeight  "Params.category" "project-archive" }}
     
     {{ $all_projects := slice }}
