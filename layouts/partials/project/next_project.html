@@ -81,16 +81,7 @@
     {{- /* Project Prev/Next Navigation. */ -}}
 
 {{ $pages := $all_projects}}
-
-{{- with $pages.Next $this_project  }}
-<a href="{{ .RelPermalink }}">&lt;</a>
-{{ else }}&nbsp;&nbsp;{{ end -}}
-
-{{ $this_project.Params.project_id -}}
-
-{{- with $pages.Prev $this_project  }}
-  <a href="{{ .RelPermalink }}">&gt;</a>
-{{ else }}&nbsp;&nbsp;{{ end -}}
+{{ $all_projects}}
 
   
 </li>
