@@ -1,5 +1,5 @@
-<li >
-
+{{ if or (eq .Type "Bachelor") (eq .Type "Master") }}
+    <li >
     {{ $this_project := .CurrentSection}}
     {{ $this_semester := .CurrentSection.Parent.Parent }}
 
@@ -81,7 +81,16 @@
     {{- /* Project Prev/Next Navigation. */ -}}
 
 {{ $pages := $all_projects}}
-{{ $all_projects}}
 
+{{- with $pages.Next $this_project  }}
+<a href="{{ .RelPermalink }}">&lt;</a>
+{{ else }}&nbsp;&nbsp;{{ end -}}
+
+{{ $this_project.Params.project_id -}}
+
+{{- with $pages.Prev $this_project  }}
+  <a href="{{ .RelPermalink }}">&gt;</a>
+{{ else }}&nbsp;&nbsp;{{ end -}}
   
 </li>
+{{ end }}
