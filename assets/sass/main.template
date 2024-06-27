@@ -293,6 +293,7 @@ header {
     .type {
         margin-bottom: 1rem;
     }
+   
 
     section {
         flex: 3;
@@ -356,6 +357,16 @@ span.type {
         content: " PROJECT";
     }
 }
+
+span.subtitle {
+    text-transform: uppercase;
+    color: $color-primary;
+    font-weight: 100;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
 
 .block {
     display: block;

@@ -9,10 +9,9 @@
             <h1>
                 <span class="type">{{ .CurrentSection.Params.project_id }} {{ .Type }}</span>
                 {{ .CurrentSection.Title }}
-                <span class="underscore-spacer"> 
-
-                    
-                </span>
+            
+             <span class="subtitle">{{ with .CurrentSection.Params.SubTitle }}{{ . }}{{ end }}</span>
+             <span class="underscore-spacer"></span>
             </h1>
             <section style="text-align: right;">
                 <div class="spacer"></div>
