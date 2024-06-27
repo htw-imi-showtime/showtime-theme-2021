@@ -3,7 +3,7 @@
     {{ $this_project := .CurrentSection}}
     {{ $this_semester := .CurrentSection.Parent.Parent }}
 
-    {{ $this_semester_step1 :=index (findRE "^/((ws|ss)..)/.*" .RelPermalink) 0 }}
+    {{ $this_semester_step1 :=index (findRE "^.*/((ws|ss)..)/.*" .RelPermalink) 0 }}
     {{ $this_semester_name :=index (findRE "((ws|ss)..)" $this_semester_step1) 0 }}
     {{ $all_semester := where .Site.Pages.ByWeight  "Params.category" "project-archive" }}
     
