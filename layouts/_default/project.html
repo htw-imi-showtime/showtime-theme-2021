@@ -9,8 +9,7 @@
             <h1>
                 <span class="type">{{ .CurrentSection.Params.project_id }} {{ .Type }}</span>
                 {{ .CurrentSection.Title }}
-            
-             <span class="subtitle">{{ with .CurrentSection.Params.SubTitle }}{{ . }}{{ end }}</span>
+             <span class="subtitle {{ .Type | lower }}">{{ with .CurrentSection.Params.Subtitle }}{{ . }}{{ end }}</span>
              <span class="underscore-spacer"></span>
             </h1>
             <section style="text-align: right;">
@@ -78,9 +77,11 @@
             </a>
             {{ end }}
             <p class="intro">
-                {{ .CurrentSection.Params.card_description }}
+                {{ if ne "" .Params.claim }}{{ .Params.claim }}
+                {{ else }}{{ .Params.card_description }}{{ end }}
             </p>
         {{ end }}
+        {{ with .Params.Abstract }}<p>{{ . }}</p>{{ end }}
         {{ .Content }}
     </main>
 {{ end }}
