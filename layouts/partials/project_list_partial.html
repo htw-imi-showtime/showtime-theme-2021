@@ -22,7 +22,7 @@
             {{ $image := newScratch }}
             {{ if (and .Params.card_image (.Resources.GetMatch .Params.card_image)) }}
                 {{ $image.Set "src" (.Resources.GetMatch .Params.card_image).RelPermalink }}
-            {{ else }}
+            {{ else }} 
                 {{ $image.Set "src" (printf "%s/images/placeholder.png" .Site.BaseURL) }}
             {{ end }}
             <img src="{{ $image.Get "src" }}" alt="{{ .Title }}">

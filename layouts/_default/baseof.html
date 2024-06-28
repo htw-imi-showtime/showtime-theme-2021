@@ -42,6 +42,6 @@
 </html>
 
 {{ define "project_navigation" }}
-    {{ $first_project := partial "project/first_project.page" .}}
+    {{ $first_project := partial "project/first_project_in_semester.page" .}}
     <li><a href="{{ $first_project.RelPermalink | relURL}}">Browse Projects</a></li>
 {{ end }}
