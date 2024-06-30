@@ -26,6 +26,14 @@
                     <h4>Supervision</h4>
                     {{ .CurrentSection.Params.supervisor }}
                 {{ end }}
+                {{ if .CurrentSection.Params.supervisors }}
+                    <h4>Supervision</h4>
+                    <ul>
+                        {{ range .CurrentSection.Params.supervisors }}
+                            <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                {{ end }}
             </section>
         </header>
     </div>
@@ -81,7 +89,16 @@
                 {{ else }}{{ .Params.card_description }}{{ end }}
             </p>
         {{ end }}
-        {{ with .Params.Abstract }}<p>{{ . }}</p>{{ end }}
+
+        {{ with .Params.Abstract }}
+        <section>
+            <h3>Abstract</h3>
+            <div class="spacer"></div>
+            <div class="content">
+                {{ . }}
+            </div>
+        </section>
+        {{ end }}
         {{ .Content }}
     </main>
 {{ end }}
