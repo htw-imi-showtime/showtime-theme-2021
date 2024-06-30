@@ -24,15 +24,15 @@
                 {{ end }}
                 {{ if .CurrentSection.Params.supervisor }}
                     <h4>Supervision</h4>
-                    {{ .CurrentSection.Params.supervisor }}
-                {{ end }}
-                {{ if .CurrentSection.Params.supervisors }}
-                    <h4>Supervision</h4>
-                    <ul>
-                        {{ range .CurrentSection.Params.supervisors }}
+                    {{ if eq "string" (printf "%T" .CurrentSection.Params.supervisor ) }}
+                         {{ .CurrentSection.Params.supervisor }}
+                    {{ else }} 
+                        <ul>
+                        {{ range .CurrentSection.Params.supervisor }}
                             <li>{{ . }}</li>
                         {{ end }}
-                    </ul>
+                        </ul>
+                    {{ end }}
                 {{ end }}
             </section>
         </header>

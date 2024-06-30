@@ -81,6 +81,13 @@ h3 {
         display: none;
     }
 }
+.plain  {
+
+   &::after {
+        content: "";
+    }
+}
+
 .project-subtitle {
     font-size: 1rem;
  &::before {
