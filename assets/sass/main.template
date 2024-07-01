@@ -358,6 +358,9 @@ hr {
     &.alternate:nth-of-type(even)::after {
         left: 0;
     }
+    &.project_divider {
+         margin-bottom: 8rem;
+    }
 }
 
 span.type {
