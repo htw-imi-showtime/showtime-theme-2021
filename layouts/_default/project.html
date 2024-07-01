@@ -89,7 +89,9 @@
                 {{ else }}{{ .Params.card_description }}{{ end }}
             </p>
         {{ end }}
-
+        {{ with .Params.Intro }}
+            {{ . }}
+        {{ end }}
         {{ with .Params.Abstract }}
         <section>
             <h3>Abstract</h3>
