@@ -35,16 +35,16 @@
             {{ index $disk_usages $path }}</p>
             
                 {{ partial "taxonomies" . }}
-        <small><pre>
-
-<b>for data/schedule.toml:</b>
-[[slot]]
-time = "10:00"
-title = "{{ .Params.project_id }} - {{ .Title }} {{ .Params.Subtitle }}"
-projectDetail = "{{ .RelPermalink }}"
-class = "{{ .Type | lower}}"
-
-    </pre></small></p>
+        <small><pre><b>for data/schedule.toml:</b>
+                {{ partial "project/schedule_data.toml" . }}
+        </pre></small></p>
     
 {{ end }}
+<hr/>
+<small><pre>
+<b>for data/schedule.toml:</b>
+{{ range $projects }}
+{{ partial "project/schedule_data.toml" . }}
+{{ end }}
 </main>
+</pre></small>
