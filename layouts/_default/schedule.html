@@ -35,12 +35,13 @@
             {{ if isset . "project_id"}}
                 {{ $project_index := index (where $semester_projects ".Params.project_id" .project_id ) 0 }}
                 {{ with $project_index}}
-                    {{ $slot_title = printf "%s - %s" .Params.project_id .Title}}
+                    {{ $slot_title = printf "%s - %s: %s" .Params.project_id .Title .Params.Subtitle}}
                     {{ $slot_link = .RelPermalink}}
                     {{ with .Params.sub_title }}
                         {{ $slot_text = printf "%s - %s"  $slot_text . | lower }}
                     {{ end }}   
                 {{ end }}
+                
                 {{ if in .project_id "B" }}
                     {{ $slot_class = "bachelor" }}
                 {{ else }}
@@ -48,6 +49,7 @@
                         {{ $slot_class = "master" }}
                     {{ end}}
                 {{ end}}
+                
                 
             {{ end }}
      

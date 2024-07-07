@@ -1,5 +1,6 @@
 [[slot]]
 time = "10:00"
-title = "{{ .Params.project_id }} - {{ .Title }}: {{ .Params.Subtitle }}"
-projectDetail = "{{ .RelPermalink }}"
-class = "{{ .Type | lower}}"
+project_id = "{{ .Params.project_id }}"
+# title = "{{ .Params.project_id }} - {{ .Title }}: {{ .Params.Subtitle }}"
+# projectDetail = "{{ .RelPermalink }}"
+# class = "{{ .Type | lower}}"
